@@ -21,20 +21,15 @@ if (!Directory.Exists(rootPath))
     return;
 }
 
-FileScanner fileScanner = new();
-IndexSummaryBuilder summaryBuilder = new();
-ConsoleIndexReporter reporter = new();
-IndexJsonWriter jsonWriter = new();
+FileScanner fileScanner = new FileScanner();
+IndexSummaryBuilder summaryBuilder = new IndexSummaryBuilder();
+CodebaseIndexBuilder indexBuilder = new CodebaseIndexBuilder(fileScanner, summaryBuilder);
 
-List<FileIndexEntry> entries = fileScanner.Scan(rootPath, scannerOptions);
-IndexSummary summary = summaryBuilder.Build(entries);
+ConsoleIndexReporter reporter = new ConsoleIndexReporter();
+IndexJsonWriter jsonWriter = new IndexJsonWriter();
 
-CodebaseIndex codebaseIndex = new(
-    rootPath,
-    DateTime.UtcNow,
-    summary,
-    entries
-);
+CodebaseIndex codebaseIndex = indexBuilder.Build(rootPath, scannerOptions);
 
 reporter.Print(codebaseIndex);
 jsonWriter.Save(codebaseIndex, rootPath);
+;
