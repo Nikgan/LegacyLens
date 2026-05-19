@@ -45,12 +45,13 @@ if (!Directory.Exists(rootPath))
     return;
 }
 
-FileScanner fileScanner = new FileScanner();
-IndexSummaryBuilder summaryBuilder = new IndexSummaryBuilder();
-CodebaseIndexBuilder indexBuilder = new CodebaseIndexBuilder(fileScanner, summaryBuilder);
+CodeItemExtractor codeItemExtractor = new();
+FileScanner fileScanner = new(codeItemExtractor);
+IndexSummaryBuilder summaryBuilder = new();
+CodebaseIndexBuilder indexBuilder = new(fileScanner, summaryBuilder);
 
-ConsoleIndexReporter reporter = new ConsoleIndexReporter();
-IndexJsonWriter jsonWriter = new IndexJsonWriter();
+ConsoleIndexReporter reporter = new();
+IndexJsonWriter jsonWriter = new();
 
 CodebaseIndex codebaseIndex = indexBuilder.Build(rootPath, scannerOptions);
 

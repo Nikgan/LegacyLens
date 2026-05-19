@@ -1,35 +1,37 @@
 {
   "RootPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens",
-  "CreatedAt": "2026-05-19T17:03:15.3597112Z",
+  "CreatedAt": "2026-05-19T19:55:42.3789309Z",
   "Summary": {
-    "FileCount": 17,
+    "FileCount": 21,
     "ReadErrorCount": 0,
-    "TotalLineCount": 960,
-    "TotalNonEmptyLineCount": 794,
-    "totalCodeItemCount": 15,
-    "TotalSizeBytes": 28098
+    "TotalLineCount": 1337,
+    "TotalNonEmptyLineCount": 1105,
+    "totalCodeItemCount": 19,
+    "TotalSizeBytes": 39835
   },
   "Files": [
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\README.md",
       "RelativePath": "README.md",
       "Extension": ".md",
-      "SizeBytes": 12,
-      "LineCount": 1,
-      "NonEmptyLineCount": 1,
-      "CodeItemCount": 0,
+      "SizeBytes": 823,
+      "LineCount": 32,
+      "NonEmptyLineCount": 23,
+      "CodeItems": [],
       "ErrorMessage": null,
+      "CodeItemCount": 0,
       "IsReadSuccessfully": true
     },
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Program.cs",
       "RelativePath": "LegacyLens\\Program.cs",
       "Extension": ".cs",
-      "SizeBytes": 1916,
-      "LineCount": 61,
-      "NonEmptyLineCount": 51,
-      "CodeItemCount": 0,
+      "SizeBytes": 2102,
+      "LineCount": 73,
+      "NonEmptyLineCount": 59,
+      "CodeItems": [],
       "ErrorMessage": null,
+      "CodeItemCount": 0,
       "IsReadSuccessfully": true
     },
     {
@@ -39,19 +41,54 @@
       "SizeBytes": 170,
       "LineCount": 8,
       "NonEmptyLineCount": 7,
-      "CodeItemCount": 1,
+      "CodeItems": [
+        {
+          "Kind": "record",
+          "Name": "CodebaseIndex",
+          "LineNumber": 3,
+          "Signature": "public record CodebaseIndex("
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\CodeItem.cs",
+      "RelativePath": "LegacyLens\\Models\\CodeItem.cs",
+      "Extension": ".cs",
+      "SizeBytes": 260,
+      "LineCount": 9,
+      "NonEmptyLineCount": 8,
+      "CodeItems": [
+        {
+          "Kind": "record",
+          "Name": "CodeItem",
+          "LineNumber": 3,
+          "Signature": "public record CodeItem"
+        }
+      ],
+      "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\FileIndexEntry.cs",
       "RelativePath": "LegacyLens\\Models\\FileIndexEntry.cs",
       "Extension": ".cs",
-      "SizeBytes": 560,
-      "LineCount": 15,
-      "NonEmptyLineCount": 13,
-      "CodeItemCount": 1,
+      "SizeBytes": 617,
+      "LineCount": 16,
+      "NonEmptyLineCount": 14,
+      "CodeItems": [
+        {
+          "Kind": "record",
+          "Name": "FileIndexEntry",
+          "LineNumber": 3,
+          "Signature": "public record FileIndexEntry"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
@@ -61,19 +98,35 @@
       "SizeBytes": 220,
       "LineCount": 10,
       "NonEmptyLineCount": 9,
-      "CodeItemCount": 1,
+      "CodeItems": [
+        {
+          "Kind": "record",
+          "Name": "IndexSummary",
+          "LineNumber": 3,
+          "Signature": "public record IndexSummary("
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Options\\CommandLineOptions.cs",
       "RelativePath": "LegacyLens\\Options\\CommandLineOptions.cs",
       "Extension": ".cs",
-      "SizeBytes": 239,
-      "LineCount": 8,
-      "NonEmptyLineCount": 7,
-      "CodeItemCount": 1,
+      "SizeBytes": 289,
+      "LineCount": 9,
+      "NonEmptyLineCount": 8,
+      "CodeItems": [
+        {
+          "Kind": "record",
+          "Name": "CommandLineOptions",
+          "LineNumber": 3,
+          "Signature": "public record CommandLineOptions"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
@@ -83,8 +136,16 @@
       "SizeBytes": 280,
       "LineCount": 8,
       "NonEmptyLineCount": 7,
-      "CodeItemCount": 1,
+      "CodeItems": [
+        {
+          "Kind": "record",
+          "Name": "ScannerOptions",
+          "LineNumber": 3,
+          "Signature": "public record ScannerOptions"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
@@ -94,19 +155,54 @@
       "SizeBytes": 890,
       "LineCount": 33,
       "NonEmptyLineCount": 27,
-      "CodeItemCount": 1,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "CodebaseIndexBuilder",
+          "LineNumber": 6,
+          "Signature": "public class CodebaseIndexBuilder"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\CodeItemExtractor.cs",
+      "RelativePath": "LegacyLens\\Services\\CodeItemExtractor.cs",
+      "Extension": ".cs",
+      "SizeBytes": 4133,
+      "LineCount": 155,
+      "NonEmptyLineCount": 123,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "CodeItemExtractor",
+          "LineNumber": 5,
+          "Signature": "public class CodeItemExtractor"
+        }
+      ],
+      "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\CommandLineOptionsParser.cs",
       "RelativePath": "LegacyLens\\Services\\CommandLineOptionsParser.cs",
       "Extension": ".cs",
-      "SizeBytes": 1742,
-      "LineCount": 69,
-      "NonEmptyLineCount": 56,
-      "CodeItemCount": 1,
+      "SizeBytes": 2958,
+      "LineCount": 116,
+      "NonEmptyLineCount": 94,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "CommandLineOptionsParser",
+          "LineNumber": 5,
+          "Signature": "public class CommandLineOptionsParser"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
@@ -116,19 +212,54 @@
       "SizeBytes": 1211,
       "LineCount": 30,
       "NonEmptyLineCount": 27,
-      "CodeItemCount": 1,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "ConsoleIndexReporter",
+          "LineNumber": 5,
+          "Signature": "public class ConsoleIndexReporter"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\FileScanner.cs",
       "RelativePath": "LegacyLens\\Services\\FileScanner.cs",
       "Extension": ".cs",
-      "SizeBytes": 6861,
-      "LineCount": 230,
-      "NonEmptyLineCount": 197,
-      "CodeItemCount": 1,
+      "SizeBytes": 5137,
+      "LineCount": 174,
+      "NonEmptyLineCount": 150,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "FileScanner",
+          "LineNumber": 6,
+          "Signature": "public class FileScanner"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\HelpTextPrinter.cs",
+      "RelativePath": "LegacyLens\\Services\\HelpTextPrinter.cs",
+      "Extension": ".cs",
+      "SizeBytes": 1202,
+      "LineCount": 26,
+      "NonEmptyLineCount": 25,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "HelpTextPrinter",
+          "LineNumber": 3,
+          "Signature": "public class HelpTextPrinter"
+        }
+      ],
+      "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
@@ -138,8 +269,16 @@
       "SizeBytes": 748,
       "LineCount": 28,
       "NonEmptyLineCount": 21,
-      "CodeItemCount": 1,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "IndexJsonWriter",
+          "LineNumber": 6,
+          "Signature": "public class IndexJsonWriter"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
@@ -149,8 +288,35 @@
       "SizeBytes": 1030,
       "LineCount": 39,
       "NonEmptyLineCount": 33,
-      "CodeItemCount": 1,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "IndexSummaryBuilder",
+          "LineNumber": 5,
+          "Signature": "public class IndexSummaryBuilder"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\CodeItemExtractorTests.cs",
+      "RelativePath": "LegacyLens.Tests\\CodeItemExtractorTests.cs",
+      "Extension": ".cs",
+      "SizeBytes": 2632,
+      "LineCount": 86,
+      "NonEmptyLineCount": 67,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "CodeItemExtractorTests",
+          "LineNumber": 7,
+          "Signature": "public class CodeItemExtractorTests"
+        }
+      ],
+      "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
@@ -160,30 +326,60 @@
       "SizeBytes": 2865,
       "LineCount": 90,
       "NonEmptyLineCount": 69,
-      "CodeItemCount": 1,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "CommandLineOptionsParserTests",
+          "LineNumber": 7,
+          "Signature": "public class CommandLineOptionsParserTests"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\FileScannerTests.cs",
       "RelativePath": "LegacyLens.Tests\\FileScannerTests.cs",
       "Extension": ".cs",
-      "SizeBytes": 6440,
-      "LineCount": 239,
-      "NonEmptyLineCount": 187,
-      "CodeItemCount": 2,
+      "SizeBytes": 7332,
+      "LineCount": 249,
+      "NonEmptyLineCount": 197,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "FileScannerTests",
+          "LineNumber": 8,
+          "Signature": "public class FileScannerTests"
+        },
+        {
+          "Kind": "class",
+          "Name": "Program",
+          "LineNumber": 22,
+          "Signature": "public class Program"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 2,
       "IsReadSuccessfully": true
     },
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\IndexSummaryBuilderTests.cs",
       "RelativePath": "LegacyLens.Tests\\IndexSummaryBuilderTests.cs",
       "Extension": ".cs",
-      "SizeBytes": 2850,
-      "LineCount": 90,
-      "NonEmptyLineCount": 81,
-      "CodeItemCount": 1,
+      "SizeBytes": 4872,
+      "LineCount": 145,
+      "NonEmptyLineCount": 136,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "IndexSummaryBuilderTests",
+          "LineNumber": 7,
+          "Signature": "public class IndexSummaryBuilderTests"
+        }
+      ],
       "ErrorMessage": null,
+      "CodeItemCount": 1,
       "IsReadSuccessfully": true
     },
     {
@@ -193,8 +389,9 @@
       "SizeBytes": 64,
       "LineCount": 1,
       "NonEmptyLineCount": 1,
-      "CodeItemCount": 0,
+      "CodeItems": [],
       "ErrorMessage": null,
+      "CodeItemCount": 0,
       "IsReadSuccessfully": true
     }
   ]

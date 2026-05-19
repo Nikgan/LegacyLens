@@ -19,7 +19,23 @@ public class IndexSummaryBuilderTests
                 SizeBytes = 100,
                 LineCount = 10,
                 NonEmptyLineCount = 8,
-                CodeItemCount = 2,
+                CodeItems = new List<CodeItem>()
+                {
+                    new CodeItem()
+                    {
+                        Kind = "class",
+                        Name = "TestClass",
+                        LineNumber = 1,
+                        Signature = "public class TestClass"
+                    },
+                    new CodeItem()
+                    {
+                        Kind = "class",
+                        Name = "AnotherClass",
+                        LineNumber = 10,
+                        Signature = "public class AnotherClass"
+                    }
+                },
                 ErrorMessage = null
             },
             new FileIndexEntry()
@@ -30,7 +46,30 @@ public class IndexSummaryBuilderTests
                 SizeBytes = 200,
                 LineCount = 20,
                 NonEmptyLineCount = 15,
-                CodeItemCount = 3,
+                CodeItems = new List<CodeItem>()
+                {
+                    new CodeItem()
+                    {
+                        Kind = "class",
+                        Name = "TestClass",
+                        LineNumber = 1,
+                        Signature = "public class TestClass"
+                    },
+                    new CodeItem()
+                    {
+                        Kind = "class",
+                        Name = "AnotherClass",
+                        LineNumber = 10,
+                        Signature = "public class AnotherClass"
+                    },
+                    new CodeItem()
+                    {
+                        Kind = "class",
+                        Name = "Another3Class",
+                        LineNumber = 11,
+                        Signature = "public class AnotherClass"
+                    }
+                },
                 ErrorMessage = null
             }
         };
@@ -60,7 +99,23 @@ public class IndexSummaryBuilderTests
             SizeBytes = 100,
             LineCount = 10,
             NonEmptyLineCount = 8,
-            CodeItemCount = 2,
+            CodeItems = new List<CodeItem>()
+            {
+                new CodeItem()
+                {
+                    Kind = "class",
+                    Name = "TestClass",
+                    LineNumber = 1,
+                    Signature = "public class TestClass"
+                },
+                new CodeItem()
+                {
+                    Kind = "class",
+                    Name = "AnotherClass",
+                    LineNumber = 10,
+                    Signature = "public class AnotherClass"
+                }
+            },
             ErrorMessage = null
         },
         new FileIndexEntry()
@@ -71,7 +126,7 @@ public class IndexSummaryBuilderTests
             SizeBytes = 0,
             LineCount = 0,
             NonEmptyLineCount = 0,
-            CodeItemCount = 0,
+            CodeItems = [],
             ErrorMessage = "Access denied"
         }
     };

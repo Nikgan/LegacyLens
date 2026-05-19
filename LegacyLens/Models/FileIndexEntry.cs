@@ -8,8 +8,8 @@ public record FileIndexEntry
     public required long SizeBytes { get; init; }
     public required int LineCount { get; init; }
     public required int NonEmptyLineCount { get; init; }
-    public required int CodeItemCount { get; init; }
+    public required List<CodeItem> CodeItems { get; init; }
     public required string? ErrorMessage { get; init; }
-
+    public int CodeItemCount => CodeItems.Count;
     public bool IsReadSuccessfully => ErrorMessage is null;
 }

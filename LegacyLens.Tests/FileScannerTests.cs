@@ -37,9 +37,10 @@ public class FileScannerTests
 				SearchOption = SearchOption.AllDirectories
 			};
 
-			FileScanner scanner = new FileScanner();
+            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
+            FileScanner scanner = new FileScanner(codeItemExtractor);
 
-			List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
+            List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
 			Assert.HasCount(2, entries);
 
@@ -86,9 +87,10 @@ public class FileScannerTests
 				SearchOption = SearchOption.AllDirectories
 			};
 
-			FileScanner scanner = new FileScanner();
+            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
+            FileScanner scanner = new FileScanner(codeItemExtractor);
 
-			List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
+            List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
 			Assert.HasCount(1, entries);
 			Assert.AreEqual("Main.cs", entries[0].RelativePath);
@@ -128,9 +130,10 @@ public class FileScannerTests
 				SearchOption = SearchOption.AllDirectories
 			};
 
-			FileScanner scanner = new FileScanner();
+            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
+            FileScanner scanner = new FileScanner(codeItemExtractor);
 
-			List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
+            List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
 			Assert.HasCount(1, entries);
 
@@ -141,7 +144,12 @@ public class FileScannerTests
 			Assert.AreEqual(7, entry.LineCount);
 			Assert.AreEqual(6, entry.NonEmptyLineCount);
 			Assert.AreEqual(1, entry.CodeItemCount);
-			Assert.IsTrue(entry.IsReadSuccessfully);
+            Assert.HasCount(1, entry.CodeItems);
+            Assert.AreEqual("class", entry.CodeItems[0].Kind);
+            Assert.AreEqual("Program", entry.CodeItems[0].Name);
+            Assert.AreEqual(1, entry.CodeItems[0].LineNumber);
+            Assert.AreEqual("public class Program", entry.CodeItems[0].Signature);
+            Assert.IsTrue(entry.IsReadSuccessfully);
 			Assert.IsNull(entry.ErrorMessage);
 		}
 		finally
@@ -171,9 +179,10 @@ public class FileScannerTests
 				SearchOption = SearchOption.AllDirectories
 			};
 
-			FileScanner scanner = new FileScanner();
+            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
+            FileScanner scanner = new FileScanner(codeItemExtractor);
 
-			List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
+            List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
 			Assert.HasCount(1, entries);
 
@@ -212,9 +221,10 @@ public class FileScannerTests
 				SearchOption = SearchOption.TopDirectoryOnly
 			};
 
-			FileScanner scanner = new FileScanner();
+            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
+            FileScanner scanner = new FileScanner(codeItemExtractor);
 
-			List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
+            List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
 			Assert.HasCount(1, entries);
 			Assert.AreEqual("Program.cs", entries[0].RelativePath);

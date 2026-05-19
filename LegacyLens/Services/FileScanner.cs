@@ -5,6 +5,11 @@ namespace LegacyLens.Services;
 
 public class FileScanner
 {
+    private readonly CodeItemExtractor _codeItemExtractor;
+    public FileScanner(CodeItemExtractor codeItemExtractor)
+    {
+        _codeItemExtractor = codeItemExtractor;
+    }
     public List<FileIndexEntry> Scan(string rootPath, ScannerOptions options)
     {
         List<FileIndexEntry> entries = new List<FileIndexEntry>();
@@ -107,7 +112,7 @@ public class FileScanner
         return false;
     }
 
-    private static FileIndexEntry CreateFileIndexEntry(string rootPath, string filePath)
+    private FileIndexEntry CreateFileIndexEntry(string rootPath, string filePath)
     {
         FileInfo fileInfo = new FileInfo(filePath);
 
@@ -120,7 +125,7 @@ public class FileScanner
 
             int lineCount = lines.Length;
             int nonEmptyLineCount = CountNonEmptyLines(lines);
-            int codeItemCount = CountCodeItems(extension, lines);
+            List<CodeItem> codeItems = _codeItemExtractor.Extract(extension, lines);
 
             FileIndexEntry entry = new FileIndexEntry()
             {
@@ -130,7 +135,7 @@ public class FileScanner
                 SizeBytes = fileInfo.Length,
                 LineCount = lineCount,
                 NonEmptyLineCount = nonEmptyLineCount,
-                CodeItemCount = codeItemCount,
+                CodeItems = codeItems,
                 ErrorMessage = null
             };
             return entry;
@@ -145,7 +150,7 @@ public class FileScanner
                 SizeBytes = fileInfo.Exists ? fileInfo.Length : 0,
                 LineCount = 0,
                 NonEmptyLineCount = 0,
-                CodeItemCount = 0,
+                CodeItems = [],
                 ErrorMessage = exception.Message
             };
             return entry;
@@ -165,66 +170,5 @@ public class FileScanner
         }
 
         return count;
-    }
-
-    private static int CountCodeItems(string extension, string[] lines)
-    {
-        int count = 0;
-
-        foreach (string line in lines)
-        {
-            string trimmedLine = line.Trim();
-
-            if (string.IsNullOrWhiteSpace(trimmedLine))
-            {
-                continue;
-            }
-
-            if (trimmedLine.StartsWith("//"))
-            {
-                continue;
-            }
-
-            if (extension == ".prg")
-            {
-                if (IsHarbourFunctionLikeLine(trimmedLine))
-                {
-                    count++;
-                }
-            }
-
-            if (extension == ".cs")
-            {
-                if (IsCSharpTypeDeclarationLine(trimmedLine))
-                {
-                    count++;
-                }
-            }
-        }
-
-        return count;
-    }
-
-    private static bool IsHarbourFunctionLikeLine(string line)
-    {
-        return line.StartsWith("function ", StringComparison.OrdinalIgnoreCase) ||
-               line.StartsWith("procedure ", StringComparison.OrdinalIgnoreCase) ||
-               line.StartsWith("method ", StringComparison.OrdinalIgnoreCase);
-    }
-
-    private static bool IsCSharpTypeDeclarationLine(string line)
-    {
-        return line.StartsWith("public class ") ||
-               line.StartsWith("internal class ") ||
-               line.StartsWith("private class ") ||
-               line.StartsWith("protected class ") ||
-               line.StartsWith("class ") ||
-               line.StartsWith("public record ") ||
-               line.StartsWith("internal record ") ||
-               line.StartsWith("private record ") ||
-               line.StartsWith("record ") ||
-               line.StartsWith("public interface ") ||
-               line.StartsWith("internal interface ") ||
-               line.StartsWith("interface ");
     }
 }
