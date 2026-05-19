@@ -1,22 +1,22 @@
 {
   "RootPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens",
-  "CreatedAt": "2026-05-19T07:58:33.4976162Z",
+  "CreatedAt": "2026-05-19T08:42:53.0670003Z",
   "Summary": {
-    "FileCount": 8,
+    "FileCount": 10,
     "ReadErrorCount": 0,
-    "TotalLineCount": 328,
-    "TotalNonEmptyLineCount": 275,
-    "TotalFunctionLikeCount": 7,
-    "TotalSizeBytes": 9877
+    "TotalLineCount": 340,
+    "TotalNonEmptyLineCount": 286,
+    "TotalFunctionLikeCount": 8,
+    "TotalSizeBytes": 10357
   },
   "Files": [
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Program.cs",
       "RelativePath": "LegacyLens\\Program.cs",
       "Extension": ".cs",
-      "SizeBytes": 1000,
-      "LineCount": 35,
-      "NonEmptyLineCount": 27,
+      "SizeBytes": 1101,
+      "LineCount": 40,
+      "NonEmptyLineCount": 32,
       "FunctionLikeCount": 0,
       "ErrorMessage": null,
       "IsReadSuccessfully": true
@@ -36,7 +36,7 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\FileIndexEntry.cs",
       "RelativePath": "LegacyLens\\Models\\FileIndexEntry.cs",
       "Extension": ".cs",
-      "SizeBytes": 510,
+      "SizeBytes": 564,
       "LineCount": 15,
       "NonEmptyLineCount": 13,
       "FunctionLikeCount": 1,
@@ -55,10 +55,21 @@
       "IsReadSuccessfully": true
     },
     {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Options\\ScannerOptions.cs",
+      "RelativePath": "LegacyLens\\Options\\ScannerOptions.cs",
+      "Extension": ".cs",
+      "SizeBytes": 280,
+      "LineCount": 8,
+      "NonEmptyLineCount": 7,
+      "FunctionLikeCount": 1,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    },
+    {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\ConsoleIndexReporter.cs",
       "RelativePath": "LegacyLens\\Services\\ConsoleIndexReporter.cs",
       "Extension": ".cs",
-      "SizeBytes": 1159,
+      "SizeBytes": 1219,
       "LineCount": 30,
       "NonEmptyLineCount": 27,
       "FunctionLikeCount": 1,
@@ -69,9 +80,9 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\FileScanner.cs",
       "RelativePath": "LegacyLens\\Services\\FileScanner.cs",
       "Extension": ".cs",
-      "SizeBytes": 5176,
-      "LineCount": 168,
-      "NonEmptyLineCount": 142,
+      "SizeBytes": 5149,
+      "LineCount": 166,
+      "NonEmptyLineCount": 140,
       "FunctionLikeCount": 1,
       "ErrorMessage": null,
       "IsReadSuccessfully": true
@@ -95,6 +106,17 @@
       "LineCount": 39,
       "NonEmptyLineCount": 33,
       "FunctionLikeCount": 1,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\README.md",
+      "RelativePath": "README.md",
+      "Extension": ".md",
+      "SizeBytes": 12,
+      "LineCount": 1,
+      "NonEmptyLineCount": 1,
+      "FunctionLikeCount": 0,
       "ErrorMessage": null,
       "IsReadSuccessfully": true
     }

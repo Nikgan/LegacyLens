@@ -1,12 +1,17 @@
 ﻿using LegacyLens.Models;
 using LegacyLens.Services;
+using LegacyLens.Options;
 
 string rootPath = args.Length > 0
     ? args[0]
     : Directory.GetCurrentDirectory();
 
-string[] allowedPatterns = ["*.prg", "*.ch", "*.cs", "*.log", "*.txt", "*.md"];
-string[] excludedDirectoryNames = ["bin", "obj", ".git", ".vs", ".vscode", "node_modules", "packages"];
+ScannerOptions scannerOptions = new ScannerOptions()
+{
+    AllowedPatterns = ["*.prg", "*.ch", "*.cs", "*.log", "*.txt", "*.md"],
+    ExcludedDirectoryNames = ["bin", "obj", ".git", ".vs", ".vscode", "node_modules", "packages"],
+    SearchOption = SearchOption.AllDirectories
+};
 
 Console.WriteLine($"Indexing folder: {rootPath}");
 
@@ -21,7 +26,7 @@ IndexSummaryBuilder summaryBuilder = new();
 ConsoleIndexReporter reporter = new();
 IndexJsonWriter jsonWriter = new();
 
-List<FileIndexEntry> entries = fileScanner.Scan(rootPath, allowedPatterns, excludedDirectoryNames);
+List<FileIndexEntry> entries = fileScanner.Scan(rootPath, scannerOptions);
 IndexSummary summary = summaryBuilder.Build(entries);
 
 CodebaseIndex codebaseIndex = new(

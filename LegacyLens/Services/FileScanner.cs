@@ -1,23 +1,21 @@
 using LegacyLens.Models;
+using LegacyLens.Options;
 
 namespace LegacyLens.Services;
 
 public class FileScanner
 {
-    public List<FileIndexEntry> Scan(
-        string rootPath,
-        string[] allowedPatterns,
-        string[] excludedDirectoryNames)
+    public List<FileIndexEntry> Scan(string rootPath, ScannerOptions options)
     {
         List<FileIndexEntry> entries = new List<FileIndexEntry>();
 
-        foreach (string pattern in allowedPatterns)
+        foreach (string pattern in options.AllowedPatterns)
         {
-            string[] matchedFiles = Directory.GetFiles(rootPath, pattern, SearchOption.AllDirectories);
+            string[] matchedFiles = Directory.GetFiles(rootPath, pattern, options.SearchOption);
 
             foreach (string matchedFile in matchedFiles)
             {
-                if (ShouldSkipFile(matchedFile, excludedDirectoryNames))
+                if (ShouldSkipFile(matchedFile, options.ExcludedDirectoryNames))
                 {
                     continue;
                 }
