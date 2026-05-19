@@ -1,0 +1,102 @@
+{
+  "RootPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens",
+  "CreatedAt": "2026-05-19T07:58:33.4976162Z",
+  "Summary": {
+    "FileCount": 8,
+    "ReadErrorCount": 0,
+    "TotalLineCount": 328,
+    "TotalNonEmptyLineCount": 275,
+    "TotalFunctionLikeCount": 7,
+    "TotalSizeBytes": 9877
+  },
+  "Files": [
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Program.cs",
+      "RelativePath": "LegacyLens\\Program.cs",
+      "Extension": ".cs",
+      "SizeBytes": 1000,
+      "LineCount": 35,
+      "NonEmptyLineCount": 27,
+      "FunctionLikeCount": 0,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\CodebaseIndex.cs",
+      "RelativePath": "LegacyLens\\Models\\CodebaseIndex.cs",
+      "Extension": ".cs",
+      "SizeBytes": 170,
+      "LineCount": 8,
+      "NonEmptyLineCount": 7,
+      "FunctionLikeCount": 1,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\FileIndexEntry.cs",
+      "RelativePath": "LegacyLens\\Models\\FileIndexEntry.cs",
+      "Extension": ".cs",
+      "SizeBytes": 510,
+      "LineCount": 15,
+      "NonEmptyLineCount": 13,
+      "FunctionLikeCount": 1,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\IndexSummary.cs",
+      "RelativePath": "LegacyLens\\Models\\IndexSummary.cs",
+      "Extension": ".cs",
+      "SizeBytes": 224,
+      "LineCount": 10,
+      "NonEmptyLineCount": 9,
+      "FunctionLikeCount": 1,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\ConsoleIndexReporter.cs",
+      "RelativePath": "LegacyLens\\Services\\ConsoleIndexReporter.cs",
+      "Extension": ".cs",
+      "SizeBytes": 1159,
+      "LineCount": 30,
+      "NonEmptyLineCount": 27,
+      "FunctionLikeCount": 1,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\FileScanner.cs",
+      "RelativePath": "LegacyLens\\Services\\FileScanner.cs",
+      "Extension": ".cs",
+      "SizeBytes": 5176,
+      "LineCount": 168,
+      "NonEmptyLineCount": 142,
+      "FunctionLikeCount": 1,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\IndexJsonWriter.cs",
+      "RelativePath": "LegacyLens\\Services\\IndexJsonWriter.cs",
+      "Extension": ".cs",
+      "SizeBytes": 592,
+      "LineCount": 23,
+      "NonEmptyLineCount": 17,
+      "FunctionLikeCount": 1,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\IndexSummaryBuilder.cs",
+      "RelativePath": "LegacyLens\\Services\\IndexSummaryBuilder.cs",
+      "Extension": ".cs",
+      "SizeBytes": 1046,
+      "LineCount": 39,
+      "NonEmptyLineCount": 33,
+      "FunctionLikeCount": 1,
+      "ErrorMessage": null,
+      "IsReadSuccessfully": true
+    }
+  ]
+}
