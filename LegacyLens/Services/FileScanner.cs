@@ -9,32 +9,75 @@ public class FileScanner
     {
         List<FileIndexEntry> entries = new List<FileIndexEntry>();
 
-        foreach (string pattern in options.AllowedPatterns)
+        List<string> filePaths = GetCandidateFiles(rootPath, options);
+
+        foreach (string filePath in filePaths)
         {
-            string[] matchedFiles = Directory.GetFiles(rootPath, pattern, options.SearchOption);
-
-            foreach (string matchedFile in matchedFiles)
-            {
-                if (ShouldSkipFile(matchedFile, options.ExcludedDirectoryNames))
-                {
-                    continue;
-                }
-
-                FileIndexEntry entry = CreateFileIndexEntry(rootPath, matchedFile);
-                entries.Add(entry);
-            }
+            FileIndexEntry entry = CreateFileIndexEntry(rootPath, filePath);
+            entries.Add(entry);
         }
 
         return entries;
     }
 
-    private static bool ShouldSkipFile(string filePath, string[] excludedDirectoryNames)
+    private static List<string> GetCandidateFiles(string rootPath, ScannerOptions options)
     {
+        List<string> filePaths = new List<string>();
+
+        AddMatchingFilesFromDirectory(filePaths, rootPath, options.AllowedPatterns);
+
+        if (options.SearchOption == SearchOption.TopDirectoryOnly)
+        {
+            return filePaths;
+        }
+
+        AddMatchingFilesFromSubdirectories(filePaths, rootPath, options);
+
+        return filePaths;
+    }
+    private static void AddMatchingFilesFromDirectory(
+    List<string> filePaths,
+    string directoryPath,
+    string[] allowedPatterns)
+    {
+        foreach (string pattern in allowedPatterns)
+        {
+            string[] matchedFiles = Directory.GetFiles(
+                directoryPath,
+                pattern,
+                SearchOption.TopDirectoryOnly
+            );
+
+            filePaths.AddRange(matchedFiles);
+        }
+    }
+
+    private static void AddMatchingFilesFromSubdirectories(
+    List<string> filePaths,
+    string directoryPath,
+    ScannerOptions options)
+    {
+        string[] subdirectories = Directory.GetDirectories(directoryPath);
+
+        foreach (string subdirectory in subdirectories)
+        {
+            if (ShouldSkipDirectory(subdirectory, options.ExcludedDirectoryNames))
+            {
+                continue;
+            }
+
+            AddMatchingFilesFromDirectory(filePaths, subdirectory, options.AllowedPatterns);
+            AddMatchingFilesFromSubdirectories(filePaths, subdirectory, options);
+        }
+    }
+
+    private static bool ShouldSkipDirectory(string directoryPath, string[] excludedDirectoryNames)
+    {
+        string directoryName = Path.GetFileName(directoryPath);
+
         foreach (string excludedDirectoryName in excludedDirectoryNames)
         {
-            string excludedPart = Path.DirectorySeparatorChar + excludedDirectoryName + Path.DirectorySeparatorChar;
-
-            if (filePath.Contains(excludedPart, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(directoryName, excludedDirectoryName, StringComparison.OrdinalIgnoreCase))
             {
                 return true;
             }

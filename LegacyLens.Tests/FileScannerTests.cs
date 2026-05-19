@@ -150,6 +150,80 @@ public class FileScannerTests
 		}
 	}
 
+	[TestMethod]
+	public void Scan_ShouldFindFilesInSubdirectories_WhenSearchOptionIsAllDirectories()
+	{
+		string rootPath = CreateTempDirectory();
+
+		try
+		{
+			string servicesDirectoryPath = Path.Combine(rootPath, "src", "Services");
+			Directory.CreateDirectory(servicesDirectoryPath);
+
+			string sourceFilePath = Path.Combine(servicesDirectoryPath, "FileScanner.cs");
+
+			File.WriteAllText(sourceFilePath, "public class FileScanner { }");
+
+			ScannerOptions options = new()
+			{
+				AllowedPatterns = ["*.cs"],
+				ExcludedDirectoryNames = ["bin", "obj"],
+				SearchOption = SearchOption.AllDirectories
+			};
+
+			FileScanner scanner = new FileScanner();
+
+			List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
+
+			Assert.HasCount(1, entries);
+
+			string expectedRelativePath = Path.Combine("src", "Services", "FileScanner.cs");
+
+			Assert.AreEqual(expectedRelativePath, entries[0].RelativePath);
+			Assert.AreEqual(1, entries[0].CodeItemCount);
+		}
+		finally
+		{
+			Directory.Delete(rootPath, true);
+		}
+	}
+
+	[TestMethod]
+	public void Scan_ShouldNotFindFilesInSubdirectories_WhenSearchOptionIsTopDirectoryOnly()
+	{
+		string rootPath = CreateTempDirectory();
+
+		try
+		{
+			string rootFilePath = Path.Combine(rootPath, "Program.cs");
+
+			string servicesDirectoryPath = Path.Combine(rootPath, "src", "Services");
+			Directory.CreateDirectory(servicesDirectoryPath);
+
+			string nestedFilePath = Path.Combine(servicesDirectoryPath, "FileScanner.cs");
+
+			File.WriteAllText(rootFilePath, "public class Program { }");
+			File.WriteAllText(nestedFilePath, "public class FileScanner { }");
+
+			ScannerOptions options = new ScannerOptions()
+			{
+				AllowedPatterns = ["*.cs"],
+				ExcludedDirectoryNames = ["bin", "obj"],
+				SearchOption = SearchOption.TopDirectoryOnly
+			};
+
+			FileScanner scanner = new FileScanner();
+
+			List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
+
+			Assert.HasCount(1, entries);
+			Assert.AreEqual("Program.cs", entries[0].RelativePath);
+		}
+		finally
+		{
+			Directory.Delete(rootPath, true);
+		}
+	}
 	private static string CreateTempDirectory()
 	{
 		string tempDirectoryPath = Path.Combine(
