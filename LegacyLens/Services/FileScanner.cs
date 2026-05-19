@@ -42,12 +42,7 @@ public class FileScanner
     {
         foreach (string pattern in allowedPatterns)
         {
-            string[] matchedFiles = Directory.GetFiles(
-                directoryPath,
-                pattern,
-                SearchOption.TopDirectoryOnly
-            );
-
+            string[] matchedFiles = GetFilesSafe(directoryPath, pattern);
             filePaths.AddRange(matchedFiles);
         }
     }
@@ -57,7 +52,7 @@ public class FileScanner
     string directoryPath,
     ScannerOptions options)
     {
-        string[] subdirectories = Directory.GetDirectories(directoryPath);
+        string[] subdirectories = GetDirectoriesSafe(directoryPath);
 
         foreach (string subdirectory in subdirectories)
         {
@@ -70,7 +65,33 @@ public class FileScanner
             AddMatchingFilesFromSubdirectories(filePaths, subdirectory, options);
         }
     }
+    private static string[] GetFilesSafe(string directoryPath, string pattern)
+    {
+        try
+        {
+            return Directory.GetFiles(
+                directoryPath,
+                pattern,
+                SearchOption.TopDirectoryOnly
+            );
+        }
+        catch
+        {
+            return [];
+        }
+    }
 
+    private static string[] GetDirectoriesSafe(string directoryPath)
+    {
+        try
+        {
+            return Directory.GetDirectories(directoryPath);
+        }
+        catch
+        {
+            return [];
+        }
+    }
     private static bool ShouldSkipDirectory(string directoryPath, string[] excludedDirectoryNames)
     {
         string directoryName = Path.GetFileName(directoryPath);
