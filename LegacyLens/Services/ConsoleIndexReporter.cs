@@ -10,7 +10,7 @@ public class ConsoleIndexReporter
         {
             if (entry.IsReadSuccessfully)
             {
-                Console.WriteLine($"{entry.RelativePath} | {entry.Extension} | {entry.LineCount} lines | {entry.FunctionLikeCount} code items | {entry.SizeBytes} bytes");
+                Console.WriteLine($"{entry.RelativePath} | {entry.Extension} | {entry.LineCount} lines | {entry.CodeItemCount} code items | {entry.SizeBytes} bytes");
             }
             else
             {
@@ -23,7 +23,7 @@ public class ConsoleIndexReporter
         Console.WriteLine($"Files: {codebaseIndex.Summary.FileCount}");
         Console.WriteLine($"Lines: {codebaseIndex.Summary.TotalLineCount}");
         Console.WriteLine($"Non-empty lines: {codebaseIndex.Summary.TotalNonEmptyLineCount}");
-        Console.WriteLine($"Code items: {codebaseIndex.Summary.TotalFunctionLikeCount}");
+        Console.WriteLine($"Code items: {codebaseIndex.Summary.totalCodeItemCount}");
         Console.WriteLine($"Size: {codebaseIndex.Summary.TotalSizeBytes} bytes");
         Console.WriteLine($"Read errors: {codebaseIndex.Summary.ReadErrorCount}");
     }

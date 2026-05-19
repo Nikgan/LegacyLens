@@ -5,6 +5,6 @@ public record IndexSummary(
     int ReadErrorCount,
     int TotalLineCount,
     int TotalNonEmptyLineCount,
-    int TotalFunctionLikeCount,
+    int totalCodeItemCount,
     long TotalSizeBytes
 );

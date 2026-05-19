@@ -56,7 +56,7 @@ public class FileScanner
 
             int lineCount = lines.Length;
             int nonEmptyLineCount = CountNonEmptyLines(lines);
-            int functionLikeCount = CountFunctionLikeItems(extension, lines);
+            int codeItemCount = CountCodeItems(extension, lines);
 
             FileIndexEntry entry = new FileIndexEntry()
             {
@@ -66,7 +66,7 @@ public class FileScanner
                 SizeBytes = fileInfo.Length,
                 LineCount = lineCount,
                 NonEmptyLineCount = nonEmptyLineCount,
-                FunctionLikeCount = functionLikeCount,
+                CodeItemCount = codeItemCount,
                 ErrorMessage = null
             };
             return entry;
@@ -81,7 +81,7 @@ public class FileScanner
                 SizeBytes = fileInfo.Exists ? fileInfo.Length : 0,
                 LineCount = 0,
                 NonEmptyLineCount = 0,
-                FunctionLikeCount = 0,
+                CodeItemCount = 0,
                 ErrorMessage = exception.Message
             };
             return entry;
@@ -103,7 +103,7 @@ public class FileScanner
         return count;
     }
 
-    private static int CountFunctionLikeItems(string extension, string[] lines)
+    private static int CountCodeItems(string extension, string[] lines)
     {
         int count = 0;
 

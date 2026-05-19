@@ -9,7 +9,7 @@ public class IndexSummaryBuilder
         int readErrorCount = 0;
         int totalLineCount = 0;
         int totalNonEmptyLineCount = 0;
-        int totalFunctionLikeCount = 0;
+        int TotalCodeItemCount = 0;
         long totalSizeBytes = 0;
 
         foreach (FileIndexEntry entry in entries)
@@ -21,7 +21,7 @@ public class IndexSummaryBuilder
 
             totalLineCount += entry.LineCount;
             totalNonEmptyLineCount += entry.NonEmptyLineCount;
-            totalFunctionLikeCount += entry.FunctionLikeCount;
+            TotalCodeItemCount += entry.CodeItemCount;
             totalSizeBytes += entry.SizeBytes;
         }
 
@@ -30,7 +30,7 @@ public class IndexSummaryBuilder
             readErrorCount,
             totalLineCount,
             totalNonEmptyLineCount,
-            totalFunctionLikeCount,
+            TotalCodeItemCount,
             totalSizeBytes
         );
 

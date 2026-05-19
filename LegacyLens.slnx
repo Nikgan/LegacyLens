@@ -2,5 +2,6 @@
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
   </Folder>
+  <Project Path="LegacyLens.Tests/LegacyLens.Tests.csproj" />
   <Project Path="LegacyLens/LegacyLens.csproj" />
 </Solution>
