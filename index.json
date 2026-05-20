@@ -1,13 +1,13 @@
 {
   "RootPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens",
-  "CreatedAt": "2026-05-20T08:56:06.3094737Z",
+  "CreatedAt": "2026-05-20T09:26:47.1709406Z",
   "Summary": {
-    "FileCount": 25,
+    "FileCount": 26,
     "ReadErrorCount": 0,
-    "TotalLineCount": 1662,
-    "TotalNonEmptyLineCount": 1370,
-    "totalCodeItemCount": 48,
-    "TotalSizeBytes": 50173
+    "TotalLineCount": 1944,
+    "TotalNonEmptyLineCount": 1602,
+    "totalCodeItemCount": 55,
+    "TotalSizeBytes": 60264
   },
   "Files": [
     {
@@ -57,6 +57,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Models/CodebaseIndex.cs#record:CodebaseIndex:3-8",
           "Kind": "record",
           "Name": "CodebaseIndex",
           "StartLineNumber": 3,
@@ -74,27 +75,28 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\CodeChunk.cs",
       "RelativePath": "LegacyLens\\Models\\CodeChunk.cs",
       "Extension": ".cs",
-      "SizeBytes": 371,
-      "LineCount": 12,
-      "NonEmptyLineCount": 10,
+      "SizeBytes": 414,
+      "LineCount": 13,
+      "NonEmptyLineCount": 11,
       "CodeItems": [
         {
           "Kind": "record",
           "Name": "CodeChunk",
           "LineNumber": 3,
-          "EndLineNumber": 12,
+          "EndLineNumber": 13,
           "Signature": "public record CodeChunk",
-          "LineCount": 10
+          "LineCount": 11
         }
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Models/CodeChunk.cs#record:CodeChunk:3-13",
           "Kind": "record",
           "Name": "CodeChunk",
           "StartLineNumber": 3,
-          "EndLineNumber": 12,
-          "Text": "public record CodeChunk\r\n{\r\n\tpublic required CodeItemKind Kind { get; init; }\r\n\tpublic required string Name { get; init; }\r\n\tpublic required int StartLineNumber { get; init; }\r\n\tpublic required int EndLineNumber { get; init; }\r\n\tpublic required string Text { get; init; }\r\n\r\n\tpublic int LineCount =\u003E EndLineNumber - StartLineNumber \u002B 1;\r\n}",
-          "LineCount": 10
+          "EndLineNumber": 13,
+          "Text": "public record CodeChunk\r\n{\r\n\tpublic required string Id { get; init; }\r\n\tpublic required CodeItemKind Kind { get; init; }\r\n\tpublic required string Name { get; init; }\r\n\tpublic required int StartLineNumber { get; init; }\r\n\tpublic required int EndLineNumber { get; init; }\r\n\tpublic required string Text { get; init; }\r\n\r\n\tpublic int LineCount =\u003E EndLineNumber - StartLineNumber \u002B 1;\r\n}",
+          "LineCount": 11
         }
       ],
       "ErrorMessage": null,
@@ -121,6 +123,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Models/CodeItem.cs#record:CodeItem:3-12",
           "Kind": "record",
           "Name": "CodeItem",
           "StartLineNumber": 3,
@@ -167,6 +170,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Models/FileIndexEntry.cs#record:FileIndexEntry:3-18",
           "Kind": "record",
           "Name": "FileIndexEntry",
           "StartLineNumber": 3,
@@ -199,6 +203,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Models/IndexSummary.cs#record:IndexSummary:3-10",
           "Kind": "record",
           "Name": "IndexSummary",
           "StartLineNumber": 3,
@@ -231,6 +236,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Options/CommandLineOptions.cs#record:CommandLineOptions:3-9",
           "Kind": "record",
           "Name": "CommandLineOptions",
           "StartLineNumber": 3,
@@ -263,6 +269,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Options/ScannerOptions.cs#record:ScannerOptions:3-8",
           "Kind": "record",
           "Name": "ScannerOptions",
           "StartLineNumber": 3,
@@ -295,6 +302,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Services/CodebaseIndexBuilder.cs#class:CodebaseIndexBuilder:6-33",
           "Kind": "class",
           "Name": "CodebaseIndexBuilder",
           "StartLineNumber": 6,
@@ -312,27 +320,28 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\CodeChunkBuilder.cs",
       "RelativePath": "LegacyLens\\Services\\CodeChunkBuilder.cs",
       "Extension": ".cs",
-      "SizeBytes": 1431,
-      "LineCount": 53,
-      "NonEmptyLineCount": 42,
+      "SizeBytes": 2084,
+      "LineCount": 70,
+      "NonEmptyLineCount": 56,
       "CodeItems": [
         {
           "Kind": "class",
           "Name": "CodeChunkBuilder",
           "LineNumber": 5,
-          "EndLineNumber": 53,
+          "EndLineNumber": 70,
           "Signature": "public class CodeChunkBuilder",
-          "LineCount": 49
+          "LineCount": 66
         }
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Services/CodeChunkBuilder.cs#class:CodeChunkBuilder:5-70",
           "Kind": "class",
           "Name": "CodeChunkBuilder",
           "StartLineNumber": 5,
-          "EndLineNumber": 53,
-          "Text": "public class CodeChunkBuilder\r\n{\r\n    public List\u003CCodeChunk\u003E Build(List\u003CCodeItem\u003E codeItems, string[] lines)\r\n    {\r\n        List\u003CCodeChunk\u003E codeChunks = new List\u003CCodeChunk\u003E();\r\n\r\n        foreach (CodeItem codeItem in codeItems)\r\n        {\r\n            string text = GetTextRange(\r\n                lines,\r\n                codeItem.LineNumber,\r\n                codeItem.EndLineNumber\r\n            );\r\n\r\n            CodeChunk codeChunk = new CodeChunk()\r\n            {\r\n                Kind = codeItem.Kind,\r\n                Name = codeItem.Name,\r\n                StartLineNumber = codeItem.LineNumber,\r\n                EndLineNumber = codeItem.EndLineNumber,\r\n                Text = text\r\n            };\r\n\r\n            codeChunks.Add(codeChunk);\r\n        }\r\n\r\n        return codeChunks;\r\n    }\r\n\r\n    private static string GetTextRange(string[] lines, int startLineNumber, int endLineNumber)\r\n    {\r\n        int startIndex = Math.Max(startLineNumber - 1, 0);\r\n        int endIndex = Math.Min(endLineNumber - 1, lines.Length - 1);\r\n\r\n        if (startIndex \u003E endIndex)\r\n        {\r\n            return \u0022\u0022;\r\n        }\r\n\r\n        List\u003Cstring\u003E selectedLines = new List\u003Cstring\u003E();\r\n\r\n        for (int i = startIndex; i \u003C= endIndex; i\u002B\u002B)\r\n        {\r\n            selectedLines.Add(lines[i]);\r\n        }\r\n\r\n        return string.Join(Environment.NewLine, selectedLines);\r\n    }\r\n}",
-          "LineCount": 49
+          "EndLineNumber": 70,
+          "Text": "public class CodeChunkBuilder\r\n{\r\n    public List\u003CCodeChunk\u003E Build(string relativePath, List\u003CCodeItem\u003E codeItems, string[] lines)\r\n    {\r\n        List\u003CCodeChunk\u003E codeChunks = new List\u003CCodeChunk\u003E();\r\n\r\n        foreach (CodeItem codeItem in codeItems)\r\n        {\r\n            string text = GetTextRange(\r\n                lines,\r\n                codeItem.LineNumber,\r\n                codeItem.EndLineNumber\r\n            );\r\n\r\n            CodeChunk codeChunk = new CodeChunk()\r\n            {\r\n                Id = BuildChunkId(relativePath, codeItem),\r\n                Kind = codeItem.Kind,\r\n                Name = codeItem.Name,\r\n                StartLineNumber = codeItem.LineNumber,\r\n                EndLineNumber = codeItem.EndLineNumber,\r\n                Text = text\r\n            };\r\n\r\n            codeChunks.Add(codeChunk);\r\n        }\r\n\r\n        return codeChunks;\r\n    }\r\n\r\n    private static string BuildChunkId(string relativePath, CodeItem codeItem)\r\n    {\r\n        string normalizedPath = NormalizePath(relativePath);\r\n        string kindText = codeItem.Kind.ToString().ToLowerInvariant();\r\n        string nameText = string.IsNullOrWhiteSpace(codeItem.Name)\r\n            ? \u0022unknown\u0022\r\n            : codeItem.Name;\r\n\r\n        return $\u0022{normalizedPath}#{kindText}:{nameText}:{codeItem.LineNumber}-{codeItem.EndLineNumber}\u0022;\r\n    }\r\n\r\n    private static string NormalizePath(string path)\r\n    {\r\n        return path.Replace(\u0027\\\\\u0027, \u0027/\u0027);\r\n    }\r\n\r\n    private static string GetTextRange(string[] lines, int startLineNumber, int endLineNumber)\r\n    {\r\n        int startIndex = Math.Max(startLineNumber - 1, 0);\r\n        int endIndex = Math.Min(endLineNumber - 1, lines.Length - 1);\r\n\r\n        if (startIndex \u003E endIndex)\r\n        {\r\n            return \u0022\u0022;\r\n        }\r\n\r\n        List\u003Cstring\u003E selectedLines = new List\u003Cstring\u003E();\r\n\r\n        for (int i = startIndex; i \u003C= endIndex; i\u002B\u002B)\r\n        {\r\n            selectedLines.Add(lines[i]);\r\n        }\r\n\r\n        return string.Join(Environment.NewLine, selectedLines);\r\n    }\r\n}",
+          "LineCount": 66
         }
       ],
       "ErrorMessage": null,
@@ -344,27 +353,28 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\CodeItemExtractor.cs",
       "RelativePath": "LegacyLens\\Services\\CodeItemExtractor.cs",
       "Extension": ".cs",
-      "SizeBytes": 5775,
-      "LineCount": 211,
-      "NonEmptyLineCount": 168,
+      "SizeBytes": 6704,
+      "LineCount": 243,
+      "NonEmptyLineCount": 195,
       "CodeItems": [
         {
           "Kind": "class",
           "Name": "CodeItemExtractor",
           "LineNumber": 5,
-          "EndLineNumber": 211,
+          "EndLineNumber": 243,
           "Signature": "public class CodeItemExtractor",
-          "LineCount": 207
+          "LineCount": 239
         }
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Services/CodeItemExtractor.cs#class:CodeItemExtractor:5-243",
           "Kind": "class",
           "Name": "CodeItemExtractor",
           "StartLineNumber": 5,
-          "EndLineNumber": 211,
-          "Text": "public class CodeItemExtractor\r\n{\r\n    public List\u003CCodeItem\u003E Extract(string extension, string[] lines)\r\n    {\r\n        List\u003CCodeItem\u003E codeItems = new List\u003CCodeItem\u003E();\r\n\r\n        for (int i = 0; i \u003C lines.Length; i\u002B\u002B)\r\n        {\r\n            string trimmedLine = lines[i].Trim();\r\n\r\n            if (string.IsNullOrWhiteSpace(trimmedLine))\r\n            {\r\n                continue;\r\n            }\r\n\r\n            if (trimmedLine.StartsWith(\u0022//\u0022))\r\n            {\r\n                continue;\r\n            }\r\n\r\n            CodeItem? codeItem = null;\r\n\r\n            if (extension == \u0022.prg\u0022)\r\n            {\r\n                codeItem = TryCreateHarbourCodeItem(trimmedLine, i \u002B 1);\r\n            }\r\n\r\n            if (extension == \u0022.cs\u0022)\r\n            {\r\n                codeItem = TryCreateCSharpCodeItem(trimmedLine, i \u002B 1);\r\n            }\r\n\r\n            if (codeItem is not null)\r\n            {\r\n                codeItems.Add(codeItem);\r\n            }\r\n        }\r\n\r\n        return ApplyEndLineNumbers(codeItems, lines.Length);\r\n    }\r\n\r\n    private static CodeItem? TryCreateHarbourCodeItem(string line, int lineNumber)\r\n    {\r\n        if (line.StartsWith(\u0022class \u0022, StringComparison.OrdinalIgnoreCase))\r\n        {\r\n            return CreateCodeItem(CodeItemKind.Class, line, lineNumber);\r\n        }\r\n\r\n        if (line.StartsWith(\u0022function \u0022, StringComparison.OrdinalIgnoreCase))\r\n        {\r\n            return CreateCodeItem(CodeItemKind.Function, line, lineNumber);\r\n        }\r\n\r\n        if (line.StartsWith(\u0022procedure \u0022, StringComparison.OrdinalIgnoreCase))\r\n        {\r\n            return CreateCodeItem(CodeItemKind.Procedure, line, lineNumber);\r\n        }\r\n\r\n        if (line.StartsWith(\u0022method \u0022, StringComparison.OrdinalIgnoreCase))\r\n        {\r\n            return CreateCodeItem(CodeItemKind.Method, line, lineNumber);\r\n        }\r\n\r\n        return null;\r\n    }\r\n\r\n    private static CodeItem? TryCreateCSharpCodeItem(string line, int lineNumber)\r\n    {\r\n        string[] parts = SplitSignature(line);\r\n\r\n        foreach (string part in parts)\r\n        {\r\n            if (part == \u0022class\u0022)\r\n            {\r\n                return CreateCodeItem(CodeItemKind.Class, line, lineNumber);\r\n            }\r\n\r\n            if (part == \u0022record\u0022)\r\n            {\r\n                return CreateCodeItem(CodeItemKind.Record, line, lineNumber);\r\n            }\r\n\r\n            if (part == \u0022interface\u0022)\r\n            {\r\n                return CreateCodeItem(CodeItemKind.Interface, line, lineNumber);\r\n            }\r\n        }\r\n\r\n        return null;\r\n    }\r\n    private static string[] SplitSignature(string signature)\r\n    {\r\n        char[] separators = [\u0027 \u0027, \u0027\\t\u0027];\r\n\r\n        return signature.Split(\r\n            separators,\r\n            StringSplitOptions.RemoveEmptyEntries\r\n        );\r\n    }\r\n\r\n    private static CodeItem CreateCodeItem(CodeItemKind kind, string signature, int lineNumber)\r\n    {\r\n        string name = ExtractNameFromSignature(kind, signature);\r\n\r\n        CodeItem codeItem = new CodeItem()\r\n        {\r\n            Kind = kind,\r\n            Name = name,\r\n            LineNumber = lineNumber,\r\n            EndLineNumber = lineNumber,\r\n            Signature = signature\r\n        };\r\n\r\n        return codeItem;\r\n    }\r\n\r\n    private static string ExtractNameFromSignature(CodeItemKind kind, string signature)\r\n    {\r\n        string kindText = GetKindText(kind);\r\n        string[] parts = SplitSignature(signature);\r\n\r\n        for (int i = 0; i \u003C parts.Length; i\u002B\u002B)\r\n        {\r\n            if (!string.Equals(parts[i], kindText, StringComparison.OrdinalIgnoreCase))\r\n            {\r\n                continue;\r\n            }\r\n\r\n            int nameIndex = i \u002B 1;\r\n\r\n            if (kind == CodeItemKind.Record \u0026\u0026\r\n                nameIndex \u003C parts.Length \u0026\u0026\r\n                (parts[nameIndex] == \u0022class\u0022 || parts[nameIndex] == \u0022struct\u0022))\r\n            {\r\n                nameIndex\u002B\u002B;\r\n            }\r\n\r\n            if (nameIndex \u003E= parts.Length)\r\n            {\r\n                return \u0022\u0022;\r\n            }\r\n\r\n            return CleanCodeItemName(parts[nameIndex]);\r\n        }\r\n\r\n        return \u0022\u0022;\r\n    }\r\n\r\n    private static string GetKindText(CodeItemKind kind)\r\n    {\r\n        return kind switch\r\n        {\r\n            CodeItemKind.Class =\u003E \u0022class\u0022,\r\n            CodeItemKind.Record =\u003E \u0022record\u0022,\r\n            CodeItemKind.Interface =\u003E \u0022interface\u0022,\r\n            CodeItemKind.Function =\u003E \u0022function\u0022,\r\n            CodeItemKind.Procedure =\u003E \u0022procedure\u0022,\r\n            CodeItemKind.Method =\u003E \u0022method\u0022,\r\n            _ =\u003E \u0022\u0022\r\n        };\r\n    }\r\n\r\n    private static string CleanCodeItemName(string name)\r\n    {\r\n        int parenthesisIndex = name.IndexOf(\u0027(\u0027);\r\n\r\n        if (parenthesisIndex \u003E= 0)\r\n        {\r\n            name = name[..parenthesisIndex];\r\n        }\r\n\r\n        int genericIndex = name.IndexOf(\u0027\u003C\u0027);\r\n\r\n        if (genericIndex \u003E= 0)\r\n        {\r\n            name = name[..genericIndex];\r\n        }\r\n\r\n        return name.Trim(\u0027{\u0027, \u0027:\u0027, \u0027;\u0027);\r\n    }\r\n    private static List\u003CCodeItem\u003E ApplyEndLineNumbers(List\u003CCodeItem\u003E codeItems, int totalLineCount)\r\n    {\r\n        List\u003CCodeItem\u003E result = new List\u003CCodeItem\u003E();\r\n\r\n        for (int i = 0; i \u003C codeItems.Count; i\u002B\u002B)\r\n        {\r\n            CodeItem currentCodeItem = codeItems[i];\r\n\r\n            int endLineNumber = totalLineCount;\r\n\r\n            if (i \u002B 1 \u003C codeItems.Count)\r\n            {\r\n                CodeItem nextCodeItem = codeItems[i \u002B 1];\r\n                endLineNumber = nextCodeItem.LineNumber - 1;\r\n            }\r\n\r\n            CodeItem updatedCodeItem = currentCodeItem with\r\n            {\r\n                EndLineNumber = endLineNumber\r\n            };\r\n\r\n            result.Add(updatedCodeItem);\r\n        }\r\n\r\n        return result;\r\n    }\r\n}",
-          "LineCount": 207
+          "EndLineNumber": 243,
+          "Text": "public class CodeItemExtractor\r\n{\r\n    public List\u003CCodeItem\u003E Extract(string extension, string[] lines)\r\n    {\r\n        List\u003CCodeItem\u003E codeItems = new List\u003CCodeItem\u003E();\r\n\r\n        bool isInsideHarbourClassDeclarationBlock = false;\r\n\r\n        for (int i = 0; i \u003C lines.Length; i\u002B\u002B)\r\n        {\r\n            string trimmedLine = lines[i].Trim();\r\n\r\n            if (string.IsNullOrWhiteSpace(trimmedLine))\r\n            {\r\n                continue;\r\n            }\r\n\r\n            if (trimmedLine.StartsWith(\u0022//\u0022))\r\n            {\r\n                continue;\r\n            }\r\n\r\n            CodeItem? codeItem = null;\r\n\r\n            if (extension == \u0022.prg\u0022)\r\n            {\r\n                if (IsHarbourClassEndLine(trimmedLine))\r\n                {\r\n                    isInsideHarbourClassDeclarationBlock = false;\r\n                    continue;\r\n                }\r\n\r\n                codeItem = TryCreateHarbourCodeItem(\r\n                    trimmedLine,\r\n                    i \u002B 1,\r\n                    isInsideHarbourClassDeclarationBlock\r\n                );\r\n\r\n                if (IsHarbourClassStartLine(trimmedLine))\r\n                {\r\n                    isInsideHarbourClassDeclarationBlock = true;\r\n                }\r\n            }\r\n\r\n            if (extension == \u0022.cs\u0022)\r\n            {\r\n                codeItem = TryCreateCSharpCodeItem(trimmedLine, i \u002B 1);\r\n            }\r\n\r\n            if (codeItem is not null)\r\n            {\r\n                codeItems.Add(codeItem);\r\n            }\r\n        }\r\n\r\n        return ApplyEndLineNumbers(codeItems, lines.Length);\r\n    }\r\n\r\n    private static CodeItem? TryCreateHarbourCodeItem(\r\n    string line,\r\n    int lineNumber,\r\n    bool isInsideClassDeclarationBlock\r\n)\r\n    {\r\n        if (IsHarbourClassStartLine(line))\r\n        {\r\n            return CreateCodeItem(CodeItemKind.Class, line, lineNumber);\r\n        }\r\n\r\n        if (line.StartsWith(\u0022function \u0022, StringComparison.OrdinalIgnoreCase))\r\n        {\r\n            return CreateCodeItem(CodeItemKind.Function, line, lineNumber);\r\n        }\r\n\r\n        if (line.StartsWith(\u0022procedure \u0022, StringComparison.OrdinalIgnoreCase))\r\n        {\r\n            return CreateCodeItem(CodeItemKind.Procedure, line, lineNumber);\r\n        }\r\n\r\n        if (line.StartsWith(\u0022method \u0022, StringComparison.OrdinalIgnoreCase) \u0026\u0026\r\n            !isInsideClassDeclarationBlock)\r\n        {\r\n            return CreateCodeItem(CodeItemKind.Method, line, lineNumber);\r\n        }\r\n\r\n        return null;\r\n    }\r\n\r\n    private static bool IsHarbourClassStartLine(string line)\r\n    {\r\n        return line.StartsWith(\u0022class \u0022, StringComparison.OrdinalIgnoreCase);\r\n    }\r\n\r\n    private static bool IsHarbourClassEndLine(string line)\r\n    {\r\n        return string.Equals(line, \u0022endclass\u0022, StringComparison.OrdinalIgnoreCase);\r\n    }\r\n\r\n    private static CodeItem? TryCreateCSharpCodeItem(string line, int lineNumber)\r\n    {\r\n        string[] parts = SplitSignature(line);\r\n\r\n        foreach (string part in parts)\r\n        {\r\n            if (part == \u0022class\u0022)\r\n            {\r\n                return CreateCodeItem(CodeItemKind.Class, line, lineNumber);\r\n            }\r\n\r\n            if (part == \u0022record\u0022)\r\n            {\r\n                return CreateCodeItem(CodeItemKind.Record, line, lineNumber);\r\n            }\r\n\r\n            if (part == \u0022interface\u0022)\r\n            {\r\n                return CreateCodeItem(CodeItemKind.Interface, line, lineNumber);\r\n            }\r\n        }\r\n\r\n        return null;\r\n    }\r\n    private static string[] SplitSignature(string signature)\r\n    {\r\n        char[] separators = [\u0027 \u0027, \u0027\\t\u0027];\r\n\r\n        return signature.Split(\r\n            separators,\r\n            StringSplitOptions.RemoveEmptyEntries\r\n        );\r\n    }\r\n\r\n    private static CodeItem CreateCodeItem(CodeItemKind kind, string signature, int lineNumber)\r\n    {\r\n        string name = ExtractNameFromSignature(kind, signature);\r\n\r\n        CodeItem codeItem = new CodeItem()\r\n        {\r\n            Kind = kind,\r\n            Name = name,\r\n            LineNumber = lineNumber,\r\n            EndLineNumber = lineNumber,\r\n            Signature = signature\r\n        };\r\n\r\n        return codeItem;\r\n    }\r\n\r\n    private static string ExtractNameFromSignature(CodeItemKind kind, string signature)\r\n    {\r\n        string kindText = GetKindText(kind);\r\n        string[] parts = SplitSignature(signature);\r\n\r\n        for (int i = 0; i \u003C parts.Length; i\u002B\u002B)\r\n        {\r\n            if (!string.Equals(parts[i], kindText, StringComparison.OrdinalIgnoreCase))\r\n            {\r\n                continue;\r\n            }\r\n\r\n            int nameIndex = i \u002B 1;\r\n\r\n            if (kind == CodeItemKind.Record \u0026\u0026\r\n                nameIndex \u003C parts.Length \u0026\u0026\r\n                (parts[nameIndex] == \u0022class\u0022 || parts[nameIndex] == \u0022struct\u0022))\r\n            {\r\n                nameIndex\u002B\u002B;\r\n            }\r\n\r\n            if (nameIndex \u003E= parts.Length)\r\n            {\r\n                return \u0022\u0022;\r\n            }\r\n\r\n            return CleanCodeItemName(parts[nameIndex]);\r\n        }\r\n\r\n        return \u0022\u0022;\r\n    }\r\n\r\n    private static string GetKindText(CodeItemKind kind)\r\n    {\r\n        return kind switch\r\n        {\r\n            CodeItemKind.Class =\u003E \u0022class\u0022,\r\n            CodeItemKind.Record =\u003E \u0022record\u0022,\r\n            CodeItemKind.Interface =\u003E \u0022interface\u0022,\r\n            CodeItemKind.Function =\u003E \u0022function\u0022,\r\n            CodeItemKind.Procedure =\u003E \u0022procedure\u0022,\r\n            CodeItemKind.Method =\u003E \u0022method\u0022,\r\n            _ =\u003E \u0022\u0022\r\n        };\r\n    }\r\n\r\n    private static string CleanCodeItemName(string name)\r\n    {\r\n        int parenthesisIndex = name.IndexOf(\u0027(\u0027);\r\n\r\n        if (parenthesisIndex \u003E= 0)\r\n        {\r\n            name = name[..parenthesisIndex];\r\n        }\r\n\r\n        int genericIndex = name.IndexOf(\u0027\u003C\u0027);\r\n\r\n        if (genericIndex \u003E= 0)\r\n        {\r\n            name = name[..genericIndex];\r\n        }\r\n\r\n        return name.Trim(\u0027{\u0027, \u0027:\u0027, \u0027;\u0027);\r\n    }\r\n    private static List\u003CCodeItem\u003E ApplyEndLineNumbers(List\u003CCodeItem\u003E codeItems, int totalLineCount)\r\n    {\r\n        List\u003CCodeItem\u003E result = new List\u003CCodeItem\u003E();\r\n\r\n        for (int i = 0; i \u003C codeItems.Count; i\u002B\u002B)\r\n        {\r\n            CodeItem currentCodeItem = codeItems[i];\r\n\r\n            int endLineNumber = totalLineCount;\r\n\r\n            if (i \u002B 1 \u003C codeItems.Count)\r\n            {\r\n                CodeItem nextCodeItem = codeItems[i \u002B 1];\r\n                endLineNumber = nextCodeItem.LineNumber - 1;\r\n            }\r\n\r\n            CodeItem updatedCodeItem = currentCodeItem with\r\n            {\r\n                EndLineNumber = endLineNumber\r\n            };\r\n\r\n            result.Add(updatedCodeItem);\r\n        }\r\n\r\n        return result;\r\n    }\r\n}",
+          "LineCount": 239
         }
       ],
       "ErrorMessage": null,
@@ -391,6 +401,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Services/CommandLineOptionsParser.cs#class:CommandLineOptionsParser:5-116",
           "Kind": "class",
           "Name": "CommandLineOptionsParser",
           "StartLineNumber": 5,
@@ -423,6 +434,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Services/ConsoleIndexReporter.cs#class:ConsoleIndexReporter:5-30",
           "Kind": "class",
           "Name": "ConsoleIndexReporter",
           "StartLineNumber": 5,
@@ -440,7 +452,7 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\FileScanner.cs",
       "RelativePath": "LegacyLens\\Services\\FileScanner.cs",
       "Extension": ".cs",
-      "SizeBytes": 5438,
+      "SizeBytes": 5452,
       "LineCount": 179,
       "NonEmptyLineCount": 155,
       "CodeItems": [
@@ -455,11 +467,12 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Services/FileScanner.cs#class:FileScanner:6-179",
           "Kind": "class",
           "Name": "FileScanner",
           "StartLineNumber": 6,
           "EndLineNumber": 179,
-          "Text": "public class FileScanner\r\n{\r\n    private readonly CodeItemExtractor _codeItemExtractor;\r\n    private readonly CodeChunkBuilder _codeChunkBuilder;\r\n    public FileScanner(CodeItemExtractor codeItemExtractor, CodeChunkBuilder codeChunkBuilder)\r\n    {\r\n        _codeItemExtractor = codeItemExtractor;\r\n        _codeChunkBuilder = codeChunkBuilder;\r\n    }\r\n    public List\u003CFileIndexEntry\u003E Scan(string rootPath, ScannerOptions options)\r\n    {\r\n        List\u003CFileIndexEntry\u003E entries = new List\u003CFileIndexEntry\u003E();\r\n\r\n        List\u003Cstring\u003E filePaths = GetCandidateFiles(rootPath, options);\r\n\r\n        foreach (string filePath in filePaths)\r\n        {\r\n            FileIndexEntry entry = CreateFileIndexEntry(rootPath, filePath);\r\n            entries.Add(entry);\r\n        }\r\n\r\n        return entries;\r\n    }\r\n\r\n    private static List\u003Cstring\u003E GetCandidateFiles(string rootPath, ScannerOptions options)\r\n    {\r\n        List\u003Cstring\u003E filePaths = new List\u003Cstring\u003E();\r\n\r\n        AddMatchingFilesFromDirectory(filePaths, rootPath, options.AllowedPatterns);\r\n\r\n        if (options.SearchOption == SearchOption.TopDirectoryOnly)\r\n        {\r\n            return filePaths;\r\n        }\r\n\r\n        AddMatchingFilesFromSubdirectories(filePaths, rootPath, options);\r\n\r\n        return filePaths;\r\n    }\r\n    private static void AddMatchingFilesFromDirectory(\r\n    List\u003Cstring\u003E filePaths,\r\n    string directoryPath,\r\n    string[] allowedPatterns)\r\n    {\r\n        foreach (string pattern in allowedPatterns)\r\n        {\r\n            string[] matchedFiles = GetFilesSafe(directoryPath, pattern);\r\n            filePaths.AddRange(matchedFiles);\r\n        }\r\n    }\r\n\r\n    private static void AddMatchingFilesFromSubdirectories(\r\n    List\u003Cstring\u003E filePaths,\r\n    string directoryPath,\r\n    ScannerOptions options)\r\n    {\r\n        string[] subdirectories = GetDirectoriesSafe(directoryPath);\r\n\r\n        foreach (string subdirectory in subdirectories)\r\n        {\r\n            if (ShouldSkipDirectory(subdirectory, options.ExcludedDirectoryNames))\r\n            {\r\n                continue;\r\n            }\r\n\r\n            AddMatchingFilesFromDirectory(filePaths, subdirectory, options.AllowedPatterns);\r\n            AddMatchingFilesFromSubdirectories(filePaths, subdirectory, options);\r\n        }\r\n    }\r\n    private static string[] GetFilesSafe(string directoryPath, string pattern)\r\n    {\r\n        try\r\n        {\r\n            return Directory.GetFiles(\r\n                directoryPath,\r\n                pattern,\r\n                SearchOption.TopDirectoryOnly\r\n            );\r\n        }\r\n        catch\r\n        {\r\n            return [];\r\n        }\r\n    }\r\n\r\n    private static string[] GetDirectoriesSafe(string directoryPath)\r\n    {\r\n        try\r\n        {\r\n            return Directory.GetDirectories(directoryPath);\r\n        }\r\n        catch\r\n        {\r\n            return [];\r\n        }\r\n    }\r\n    private static bool ShouldSkipDirectory(string directoryPath, string[] excludedDirectoryNames)\r\n    {\r\n        string directoryName = Path.GetFileName(directoryPath);\r\n\r\n        foreach (string excludedDirectoryName in excludedDirectoryNames)\r\n        {\r\n            if (string.Equals(directoryName, excludedDirectoryName, StringComparison.OrdinalIgnoreCase))\r\n            {\r\n                return true;\r\n            }\r\n        }\r\n\r\n        return false;\r\n    }\r\n\r\n    private FileIndexEntry CreateFileIndexEntry(string rootPath, string filePath)\r\n    {\r\n        FileInfo fileInfo = new FileInfo(filePath);\r\n\r\n        string relativePath = Path.GetRelativePath(rootPath, filePath);\r\n        string extension = fileInfo.Extension.ToLowerInvariant();\r\n\r\n        try\r\n        {\r\n            string[] lines = File.ReadAllLines(filePath);\r\n\r\n            int lineCount = lines.Length;\r\n            int nonEmptyLineCount = CountNonEmptyLines(lines);\r\n            List\u003CCodeItem\u003E codeItems = _codeItemExtractor.Extract(extension, lines);\r\n            List\u003CCodeChunk\u003E codeChunks = _codeChunkBuilder.Build(codeItems, lines);\r\n\r\n            FileIndexEntry entry = new FileIndexEntry()\r\n            {\r\n                FullPath = filePath,\r\n                RelativePath = relativePath,\r\n                Extension = extension,\r\n                SizeBytes = fileInfo.Length,\r\n                LineCount = lineCount,\r\n                NonEmptyLineCount = nonEmptyLineCount,\r\n                CodeItems = codeItems,\r\n                CodeChunks = codeChunks,\r\n                ErrorMessage = null\r\n            };\r\n            return entry;\r\n        }\r\n        catch (Exception exception)\r\n        {\r\n            FileIndexEntry entry = new FileIndexEntry()\r\n            {\r\n                FullPath = filePath,\r\n                RelativePath = relativePath,\r\n                Extension = extension,\r\n                SizeBytes = fileInfo.Exists ? fileInfo.Length : 0,\r\n                LineCount = 0,\r\n                NonEmptyLineCount = 0,\r\n                CodeItems = [],\r\n                CodeChunks = [],\r\n                ErrorMessage = exception.Message\r\n            };\r\n            return entry;\r\n        }\r\n    }\r\n\r\n    private static int CountNonEmptyLines(string[] lines)\r\n    {\r\n        int count = 0;\r\n\r\n        foreach (string line in lines)\r\n        {\r\n            if (!string.IsNullOrWhiteSpace(line))\r\n            {\r\n                count\u002B\u002B;\r\n            }\r\n        }\r\n\r\n        return count;\r\n    }\r\n}",
+          "Text": "public class FileScanner\r\n{\r\n    private readonly CodeItemExtractor _codeItemExtractor;\r\n    private readonly CodeChunkBuilder _codeChunkBuilder;\r\n    public FileScanner(CodeItemExtractor codeItemExtractor, CodeChunkBuilder codeChunkBuilder)\r\n    {\r\n        _codeItemExtractor = codeItemExtractor;\r\n        _codeChunkBuilder = codeChunkBuilder;\r\n    }\r\n    public List\u003CFileIndexEntry\u003E Scan(string rootPath, ScannerOptions options)\r\n    {\r\n        List\u003CFileIndexEntry\u003E entries = new List\u003CFileIndexEntry\u003E();\r\n\r\n        List\u003Cstring\u003E filePaths = GetCandidateFiles(rootPath, options);\r\n\r\n        foreach (string filePath in filePaths)\r\n        {\r\n            FileIndexEntry entry = CreateFileIndexEntry(rootPath, filePath);\r\n            entries.Add(entry);\r\n        }\r\n\r\n        return entries;\r\n    }\r\n\r\n    private static List\u003Cstring\u003E GetCandidateFiles(string rootPath, ScannerOptions options)\r\n    {\r\n        List\u003Cstring\u003E filePaths = new List\u003Cstring\u003E();\r\n\r\n        AddMatchingFilesFromDirectory(filePaths, rootPath, options.AllowedPatterns);\r\n\r\n        if (options.SearchOption == SearchOption.TopDirectoryOnly)\r\n        {\r\n            return filePaths;\r\n        }\r\n\r\n        AddMatchingFilesFromSubdirectories(filePaths, rootPath, options);\r\n\r\n        return filePaths;\r\n    }\r\n    private static void AddMatchingFilesFromDirectory(\r\n    List\u003Cstring\u003E filePaths,\r\n    string directoryPath,\r\n    string[] allowedPatterns)\r\n    {\r\n        foreach (string pattern in allowedPatterns)\r\n        {\r\n            string[] matchedFiles = GetFilesSafe(directoryPath, pattern);\r\n            filePaths.AddRange(matchedFiles);\r\n        }\r\n    }\r\n\r\n    private static void AddMatchingFilesFromSubdirectories(\r\n    List\u003Cstring\u003E filePaths,\r\n    string directoryPath,\r\n    ScannerOptions options)\r\n    {\r\n        string[] subdirectories = GetDirectoriesSafe(directoryPath);\r\n\r\n        foreach (string subdirectory in subdirectories)\r\n        {\r\n            if (ShouldSkipDirectory(subdirectory, options.ExcludedDirectoryNames))\r\n            {\r\n                continue;\r\n            }\r\n\r\n            AddMatchingFilesFromDirectory(filePaths, subdirectory, options.AllowedPatterns);\r\n            AddMatchingFilesFromSubdirectories(filePaths, subdirectory, options);\r\n        }\r\n    }\r\n    private static string[] GetFilesSafe(string directoryPath, string pattern)\r\n    {\r\n        try\r\n        {\r\n            return Directory.GetFiles(\r\n                directoryPath,\r\n                pattern,\r\n                SearchOption.TopDirectoryOnly\r\n            );\r\n        }\r\n        catch\r\n        {\r\n            return [];\r\n        }\r\n    }\r\n\r\n    private static string[] GetDirectoriesSafe(string directoryPath)\r\n    {\r\n        try\r\n        {\r\n            return Directory.GetDirectories(directoryPath);\r\n        }\r\n        catch\r\n        {\r\n            return [];\r\n        }\r\n    }\r\n    private static bool ShouldSkipDirectory(string directoryPath, string[] excludedDirectoryNames)\r\n    {\r\n        string directoryName = Path.GetFileName(directoryPath);\r\n\r\n        foreach (string excludedDirectoryName in excludedDirectoryNames)\r\n        {\r\n            if (string.Equals(directoryName, excludedDirectoryName, StringComparison.OrdinalIgnoreCase))\r\n            {\r\n                return true;\r\n            }\r\n        }\r\n\r\n        return false;\r\n    }\r\n\r\n    private FileIndexEntry CreateFileIndexEntry(string rootPath, string filePath)\r\n    {\r\n        FileInfo fileInfo = new FileInfo(filePath);\r\n\r\n        string relativePath = Path.GetRelativePath(rootPath, filePath);\r\n        string extension = fileInfo.Extension.ToLowerInvariant();\r\n\r\n        try\r\n        {\r\n            string[] lines = File.ReadAllLines(filePath);\r\n\r\n            int lineCount = lines.Length;\r\n            int nonEmptyLineCount = CountNonEmptyLines(lines);\r\n            List\u003CCodeItem\u003E codeItems = _codeItemExtractor.Extract(extension, lines);\r\n            List\u003CCodeChunk\u003E codeChunks = _codeChunkBuilder.Build(relativePath, codeItems, lines);\r\n\r\n            FileIndexEntry entry = new FileIndexEntry()\r\n            {\r\n                FullPath = filePath,\r\n                RelativePath = relativePath,\r\n                Extension = extension,\r\n                SizeBytes = fileInfo.Length,\r\n                LineCount = lineCount,\r\n                NonEmptyLineCount = nonEmptyLineCount,\r\n                CodeItems = codeItems,\r\n                CodeChunks = codeChunks,\r\n                ErrorMessage = null\r\n            };\r\n            return entry;\r\n        }\r\n        catch (Exception exception)\r\n        {\r\n            FileIndexEntry entry = new FileIndexEntry()\r\n            {\r\n                FullPath = filePath,\r\n                RelativePath = relativePath,\r\n                Extension = extension,\r\n                SizeBytes = fileInfo.Exists ? fileInfo.Length : 0,\r\n                LineCount = 0,\r\n                NonEmptyLineCount = 0,\r\n                CodeItems = [],\r\n                CodeChunks = [],\r\n                ErrorMessage = exception.Message\r\n            };\r\n            return entry;\r\n        }\r\n    }\r\n\r\n    private static int CountNonEmptyLines(string[] lines)\r\n    {\r\n        int count = 0;\r\n\r\n        foreach (string line in lines)\r\n        {\r\n            if (!string.IsNullOrWhiteSpace(line))\r\n            {\r\n                count\u002B\u002B;\r\n            }\r\n        }\r\n\r\n        return count;\r\n    }\r\n}",
           "LineCount": 174
         }
       ],
@@ -487,6 +500,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Services/HelpTextPrinter.cs#class:HelpTextPrinter:3-26",
           "Kind": "class",
           "Name": "HelpTextPrinter",
           "StartLineNumber": 3,
@@ -519,6 +533,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Services/IndexJsonWriter.cs#class:IndexJsonWriter:7-31",
           "Kind": "class",
           "Name": "IndexJsonWriter",
           "StartLineNumber": 7,
@@ -551,6 +566,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens/Services/IndexSummaryBuilder.cs#class:IndexSummaryBuilder:5-39",
           "Kind": "class",
           "Name": "IndexSummaryBuilder",
           "StartLineNumber": 5,
@@ -568,27 +584,28 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\CodeChunkBuilderTests.cs",
       "RelativePath": "LegacyLens.Tests\\CodeChunkBuilderTests.cs",
       "Extension": ".cs",
-      "SizeBytes": 1991,
-      "LineCount": 74,
-      "NonEmptyLineCount": 60,
+      "SizeBytes": 2891,
+      "LineCount": 103,
+      "NonEmptyLineCount": 85,
       "CodeItems": [
         {
           "Kind": "class",
           "Name": "CodeChunkBuilderTests",
           "LineNumber": 7,
-          "EndLineNumber": 74,
+          "EndLineNumber": 103,
           "Signature": "public class CodeChunkBuilderTests",
-          "LineCount": 68
+          "LineCount": 97
         }
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens.Tests/CodeChunkBuilderTests.cs#class:CodeChunkBuilderTests:7-103",
           "Kind": "class",
           "Name": "CodeChunkBuilderTests",
           "StartLineNumber": 7,
-          "EndLineNumber": 74,
-          "Text": "public class CodeChunkBuilderTests\r\n{\r\n    [TestMethod]\r\n    public void Build_ShouldCreateCodeChunkFromCodeItemRange()\r\n    {\r\n        CodeChunkBuilder builder = new CodeChunkBuilder();\r\n\r\n        string[] lines =\r\n        [\r\n            \u0022function GetPrice()\u0022,\r\n            \u0022    local nPrice := 10\u0022,\r\n            \u0022    return nPrice\u0022,\r\n            \u0022\u0022,\r\n            \u0022function Other()\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems =\r\n        [\r\n            new CodeItem()\r\n            {\r\n                Kind = CodeItemKind.Function,\r\n                Name = \u0022GetPrice\u0022,\r\n                LineNumber = 1,\r\n                EndLineNumber = 3,\r\n                Signature = \u0022function GetPrice()\u0022\r\n            }\r\n        ];\r\n\r\n        List\u003CCodeChunk\u003E codeChunks = builder.Build(codeItems, lines);\r\n\r\n        Assert.HasCount(1, codeChunks);\r\n\r\n        Assert.AreEqual(CodeItemKind.Function, codeChunks[0].Kind);\r\n        Assert.AreEqual(\u0022GetPrice\u0022, codeChunks[0].Name);\r\n        Assert.AreEqual(1, codeChunks[0].StartLineNumber);\r\n        Assert.AreEqual(3, codeChunks[0].EndLineNumber);\r\n        Assert.AreEqual(3, codeChunks[0].LineCount);\r\n\r\n        string expectedText = string.Join(\r\n            Environment.NewLine,\r\n            [\r\n                \u0022function GetPrice()\u0022,\r\n                \u0022    local nPrice := 10\u0022,\r\n                \u0022    return nPrice\u0022\r\n            ]\r\n        );\r\n\r\n        Assert.AreEqual(expectedText, codeChunks[0].Text);\r\n    }\r\n\r\n    [TestMethod]\r\n    public void Build_ShouldReturnEmptyListWhenCodeItemsAreEmpty()\r\n    {\r\n        CodeChunkBuilder builder = new CodeChunkBuilder();\r\n\r\n        string[] lines =\r\n        [\r\n            \u0022some text\u0022,\r\n            \u0022another text\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems = new List\u003CCodeItem\u003E();\r\n\r\n        List\u003CCodeChunk\u003E codeChunks = builder.Build(codeItems, lines);\r\n\r\n        Assert.HasCount(0, codeChunks);\r\n    }\r\n}",
-          "LineCount": 68
+          "EndLineNumber": 103,
+          "Text": "public class CodeChunkBuilderTests\r\n{\r\n    [TestMethod]\r\n    public void Build_ShouldCreateCodeChunkFromCodeItemRange()\r\n    {\r\n        CodeChunkBuilder builder = new CodeChunkBuilder();\r\n\r\n        string[] lines =\r\n        [\r\n            \u0022function GetPrice()\u0022,\r\n            \u0022    local nPrice := 10\u0022,\r\n            \u0022    return nPrice\u0022,\r\n            \u0022\u0022,\r\n            \u0022function Other()\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems =\r\n        [\r\n            new CodeItem()\r\n            {\r\n                Kind = CodeItemKind.Function,\r\n                Name = \u0022GetPrice\u0022,\r\n                LineNumber = 1,\r\n                EndLineNumber = 3,\r\n                Signature = \u0022function GetPrice()\u0022\r\n            }\r\n        ];\r\n\r\n        List\u003CCodeChunk\u003E codeChunks = builder.Build(\u0022InputField.prg\u0022, codeItems, lines);\r\n\r\n        Assert.HasCount(1, codeChunks);\r\n\r\n        Assert.AreEqual(\u0022InputField.prg#function:GetPrice:1-3\u0022, codeChunks[0].Id);\r\n        Assert.AreEqual(CodeItemKind.Function, codeChunks[0].Kind);\r\n        Assert.AreEqual(\u0022GetPrice\u0022, codeChunks[0].Name);\r\n        Assert.AreEqual(1, codeChunks[0].StartLineNumber);\r\n        Assert.AreEqual(3, codeChunks[0].EndLineNumber);\r\n        Assert.AreEqual(3, codeChunks[0].LineCount);\r\n\r\n        string expectedText = string.Join(\r\n            Environment.NewLine,\r\n            [\r\n                \u0022function GetPrice()\u0022,\r\n                \u0022    local nPrice := 10\u0022,\r\n                \u0022    return nPrice\u0022\r\n            ]\r\n        );\r\n\r\n        Assert.AreEqual(expectedText, codeChunks[0].Text);\r\n    }\r\n\r\n    [TestMethod]\r\n    public void Build_ShouldReturnEmptyListWhenCodeItemsAreEmpty()\r\n    {\r\n        CodeChunkBuilder builder = new CodeChunkBuilder();\r\n\r\n        string[] lines =\r\n        [\r\n            \u0022some text\u0022,\r\n            \u0022another text\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems = new List\u003CCodeItem\u003E();\r\n\r\n        List\u003CCodeChunk\u003E codeChunks = builder.Build(\u0022test.prg\u0022, codeItems, lines);\r\n\r\n        Assert.HasCount(0, codeChunks);\r\n    }\r\n    [TestMethod]\r\n    public void Build_ShouldNormalizeWindowsPathInChunkId()\r\n    {\r\n        CodeChunkBuilder builder = new CodeChunkBuilder();\r\n\r\n        string[] lines =\r\n        [\r\n            \u0022function GetPrice()\u0022,\r\n        \u0022return 10\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems =\r\n        [\r\n            new CodeItem()\r\n        {\r\n            Kind = CodeItemKind.Function,\r\n            Name = \u0022GetPrice\u0022,\r\n            LineNumber = 1,\r\n            EndLineNumber = 2,\r\n            Signature = \u0022function GetPrice()\u0022\r\n        }\r\n        ];\r\n\r\n        List\u003CCodeChunk\u003E codeChunks = builder.Build(@\u0022utils\\priceUtils.prg\u0022, codeItems, lines);\r\n\r\n        Assert.HasCount(1, codeChunks);\r\n        Assert.AreEqual(\u0022utils/priceUtils.prg#function:GetPrice:1-2\u0022, codeChunks[0].Id);\r\n    }\r\n}",
+          "LineCount": 97
         }
       ],
       "ErrorMessage": null,
@@ -600,9 +617,9 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\CodeItemExtractorTests.cs",
       "RelativePath": "LegacyLens.Tests\\CodeItemExtractorTests.cs",
       "Extension": ".cs",
-      "SizeBytes": 5618,
-      "LineCount": 174,
-      "NonEmptyLineCount": 136,
+      "SizeBytes": 6135,
+      "LineCount": 189,
+      "NonEmptyLineCount": 150,
       "CodeItems": [
         {
           "Kind": "class",
@@ -688,21 +705,22 @@
           "Kind": "record",
           "Name": "Point\u0022",
           "LineNumber": 96,
-          "EndLineNumber": 123,
+          "EndLineNumber": 161,
           "Signature": "\u0022public readonly record struct Point\u0022",
-          "LineCount": 28
+          "LineCount": 66
         },
         {
           "Kind": "class",
           "Name": "InputField\u0022,",
-          "LineNumber": 124,
-          "EndLineNumber": 174,
-          "Signature": "\u0022method New() class InputField\u0022,",
-          "LineCount": 51
+          "LineNumber": 162,
+          "EndLineNumber": 189,
+          "Signature": "\u0022method Read() class InputField\u0022,",
+          "LineCount": 28
         }
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#class:CodeItemExtractorTests:7-15",
           "Kind": "class",
           "Name": "CodeItemExtractorTests",
           "StartLineNumber": 7,
@@ -711,6 +729,7 @@
           "LineCount": 9
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#class:FileScanner\u0022,:16-16",
           "Kind": "class",
           "Name": "FileScanner\u0022,",
           "StartLineNumber": 16,
@@ -719,6 +738,7 @@
           "LineCount": 1
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#record:CodebaseIndex\u0022,:17-17",
           "Kind": "record",
           "Name": "CodebaseIndex\u0022,",
           "StartLineNumber": 17,
@@ -727,6 +747,7 @@
           "LineCount": 1
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#interface:IIndexWriter\u0022:18-46",
           "Kind": "interface",
           "Name": "IIndexWriter\u0022",
           "StartLineNumber": 18,
@@ -735,6 +756,7 @@
           "LineCount": 29
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#class:InputField\u0022:47-75",
           "Kind": "class",
           "Name": "InputField\u0022",
           "StartLineNumber": 47,
@@ -743,6 +765,7 @@
           "LineCount": 29
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#class:FakeClass\u0022,:76-76",
           "Kind": "class",
           "Name": "FakeClass\u0022,",
           "StartLineNumber": 76,
@@ -751,6 +774,7 @@
           "LineCount": 1
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#class:RealClass\u0022:77-92",
           "Kind": "class",
           "Name": "RealClass\u0022",
           "StartLineNumber": 77,
@@ -759,6 +783,7 @@
           "LineCount": 16
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#class:StringUtils\u0022,:93-93",
           "Kind": "class",
           "Name": "StringUtils\u0022,",
           "StartLineNumber": 93,
@@ -767,6 +792,7 @@
           "LineCount": 1
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#record:UserDto\u0022,:94-94",
           "Kind": "record",
           "Name": "UserDto\u0022,",
           "StartLineNumber": 94,
@@ -775,6 +801,7 @@
           "LineCount": 1
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#class:FileScanner\u0022,:95-95",
           "Kind": "class",
           "Name": "FileScanner\u0022,",
           "StartLineNumber": 95,
@@ -783,20 +810,22 @@
           "LineCount": 1
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#record:Point\u0022:96-161",
           "Kind": "record",
           "Name": "Point\u0022",
           "StartLineNumber": 96,
-          "EndLineNumber": 123,
-          "Text": "        \u0022public readonly record struct Point\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems = extractor.Extract(\u0022.cs\u0022, lines);\r\n\r\n        Assert.HasCount(4, codeItems);\r\n\r\n        Assert.AreEqual(CodeItemKind.Class, codeItems[0].Kind);\r\n        Assert.AreEqual(\u0022StringUtils\u0022, codeItems[0].Name);\r\n\r\n        Assert.AreEqual(CodeItemKind.Record, codeItems[1].Kind);\r\n        Assert.AreEqual(\u0022UserDto\u0022, codeItems[1].Name);\r\n\r\n        Assert.AreEqual(CodeItemKind.Class, codeItems[2].Kind);\r\n        Assert.AreEqual(\u0022FileScanner\u0022, codeItems[2].Name);\r\n\r\n        Assert.AreEqual(CodeItemKind.Record, codeItems[3].Kind);\r\n        Assert.AreEqual(\u0022Point\u0022, codeItems[3].Name);\r\n    }\r\n\r\n    [TestMethod]\r\n    public void Extract_ShouldFindHarbourClass()\r\n    {\r\n        CodeItemExtractor extractor = new CodeItemExtractor();\r\n\r\n        string[] lines =\r\n        [\r\n            \u0022class InputField\u0022,",
-          "LineCount": 28
+          "EndLineNumber": 161,
+          "Text": "        \u0022public readonly record struct Point\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems = extractor.Extract(\u0022.cs\u0022, lines);\r\n\r\n        Assert.HasCount(4, codeItems);\r\n\r\n        Assert.AreEqual(CodeItemKind.Class, codeItems[0].Kind);\r\n        Assert.AreEqual(\u0022StringUtils\u0022, codeItems[0].Name);\r\n\r\n        Assert.AreEqual(CodeItemKind.Record, codeItems[1].Kind);\r\n        Assert.AreEqual(\u0022UserDto\u0022, codeItems[1].Name);\r\n\r\n        Assert.AreEqual(CodeItemKind.Class, codeItems[2].Kind);\r\n        Assert.AreEqual(\u0022FileScanner\u0022, codeItems[2].Name);\r\n\r\n        Assert.AreEqual(CodeItemKind.Record, codeItems[3].Kind);\r\n        Assert.AreEqual(\u0022Point\u0022, codeItems[3].Name);\r\n    }\r\n\r\n    [TestMethod]\r\n    public void Extract_ShouldCalculateCodeItemEndLineNumbers()\r\n    {\r\n        CodeItemExtractor extractor = new CodeItemExtractor();\r\n\r\n        string[] lines =\r\n        [\r\n            \u0022function First()\u0022,\r\n        \u0022    ? \u0027first line\u0027\u0022,\r\n        \u0022    ? \u0027second line\u0027\u0022,\r\n        \u0022\u0022,\r\n        \u0022function Second()\u0022,\r\n        \u0022    ? \u0027another line\u0027\u0022,\r\n        \u0022return nil\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems = extractor.Extract(\u0022.prg\u0022, lines);\r\n\r\n        Assert.HasCount(2, codeItems);\r\n\r\n        Assert.AreEqual(\u0022First\u0022, codeItems[0].Name);\r\n        Assert.AreEqual(1, codeItems[0].LineNumber);\r\n        Assert.AreEqual(4, codeItems[0].EndLineNumber);\r\n        Assert.AreEqual(4, codeItems[0].LineCount);\r\n\r\n        Assert.AreEqual(\u0022Second\u0022, codeItems[1].Name);\r\n        Assert.AreEqual(5, codeItems[1].LineNumber);\r\n        Assert.AreEqual(7, codeItems[1].EndLineNumber);\r\n        Assert.AreEqual(3, codeItems[1].LineCount);\r\n    }\r\n    [TestMethod]\r\n    public void Extract_ShouldIgnoreHarbourMethodDeclarationsInsideClassButFindImplementationsOutside()\r\n    {\r\n        CodeItemExtractor extractor = new CodeItemExtractor();\r\n\r\n        string[] lines =\r\n        [\r\n            \u0022class InputField\u0022,\r\n        \u0022    method New()\u0022,\r\n        \u0022    method Read()\u0022,\r\n        \u0022endclass\u0022,\r\n        \u0022\u0022,\r\n        \u0022method New()\u0022,\r\n        \u0022    ::xValue := \u0027\u0027\u0022,\r\n        \u0022return Self\u0022,\r\n        \u0022\u0022,",
+          "LineCount": 66
         },
         {
+          "Id": "LegacyLens.Tests/CodeItemExtractorTests.cs#class:InputField\u0022,:162-189",
           "Kind": "class",
           "Name": "InputField\u0022,",
-          "StartLineNumber": 124,
-          "EndLineNumber": 174,
-          "Text": "        \u0022method New() class InputField\u0022,\r\n        \u0022function GetPrice()\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems = extractor.Extract(\u0022.prg\u0022, lines);\r\n\r\n        Assert.HasCount(3, codeItems);\r\n\r\n        Assert.AreEqual(CodeItemKind.Class, codeItems[0].Kind);\r\n        Assert.AreEqual(\u0022InputField\u0022, codeItems[0].Name);\r\n        Assert.AreEqual(1, codeItems[0].LineNumber);\r\n\r\n        Assert.AreEqual(CodeItemKind.Method, codeItems[1].Kind);\r\n        Assert.AreEqual(\u0022New\u0022, codeItems[1].Name);\r\n        Assert.AreEqual(2, codeItems[1].LineNumber);\r\n\r\n        Assert.AreEqual(CodeItemKind.Function, codeItems[2].Kind);\r\n        Assert.AreEqual(\u0022GetPrice\u0022, codeItems[2].Name);\r\n        Assert.AreEqual(3, codeItems[2].LineNumber);\r\n    }\r\n    [TestMethod]\r\n    public void Extract_ShouldCalculateCodeItemEndLineNumbers()\r\n    {\r\n        CodeItemExtractor extractor = new CodeItemExtractor();\r\n\r\n        string[] lines =\r\n        [\r\n            \u0022function First()\u0022,\r\n        \u0022    ? \u0027first line\u0027\u0022,\r\n        \u0022    ? \u0027second line\u0027\u0022,\r\n        \u0022\u0022,\r\n        \u0022function Second()\u0022,\r\n        \u0022    ? \u0027another line\u0027\u0022,\r\n        \u0022return nil\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems = extractor.Extract(\u0022.prg\u0022, lines);\r\n\r\n        Assert.HasCount(2, codeItems);\r\n\r\n        Assert.AreEqual(\u0022First\u0022, codeItems[0].Name);\r\n        Assert.AreEqual(1, codeItems[0].LineNumber);\r\n        Assert.AreEqual(4, codeItems[0].EndLineNumber);\r\n        Assert.AreEqual(4, codeItems[0].LineCount);\r\n\r\n        Assert.AreEqual(\u0022Second\u0022, codeItems[1].Name);\r\n        Assert.AreEqual(5, codeItems[1].LineNumber);\r\n        Assert.AreEqual(7, codeItems[1].EndLineNumber);\r\n        Assert.AreEqual(3, codeItems[1].LineCount);\r\n    }\r\n}",
-          "LineCount": 51
+          "StartLineNumber": 162,
+          "EndLineNumber": 189,
+          "Text": "        \u0022method Read() class InputField\u0022,\r\n        \u0022    return nil\u0022,\r\n        \u0022\u0022,\r\n        \u0022function CreateInputField()\u0022,\r\n        \u0022    return InputField():New()\u0022\r\n        ];\r\n\r\n        List\u003CCodeItem\u003E codeItems = extractor.Extract(\u0022.prg\u0022, lines);\r\n\r\n        Assert.HasCount(4, codeItems);\r\n\r\n        Assert.AreEqual(CodeItemKind.Class, codeItems[0].Kind);\r\n        Assert.AreEqual(\u0022InputField\u0022, codeItems[0].Name);\r\n        Assert.AreEqual(1, codeItems[0].LineNumber);\r\n\r\n        Assert.AreEqual(CodeItemKind.Method, codeItems[1].Kind);\r\n        Assert.AreEqual(\u0022New\u0022, codeItems[1].Name);\r\n        Assert.AreEqual(6, codeItems[1].LineNumber);\r\n\r\n        Assert.AreEqual(CodeItemKind.Method, codeItems[2].Kind);\r\n        Assert.AreEqual(\u0022Read\u0022, codeItems[2].Name);\r\n        Assert.AreEqual(10, codeItems[2].LineNumber);\r\n\r\n        Assert.AreEqual(CodeItemKind.Function, codeItems[3].Kind);\r\n        Assert.AreEqual(\u0022CreateInputField\u0022, codeItems[3].Name);\r\n        Assert.AreEqual(13, codeItems[3].LineNumber);\r\n    }\r\n}",
+          "LineCount": 28
         }
       ],
       "ErrorMessage": null,
@@ -823,6 +852,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens.Tests/CommandLineOptionsParserTests.cs#class:CommandLineOptionsParserTests:7-90",
           "Kind": "class",
           "Name": "CommandLineOptionsParserTests",
           "StartLineNumber": 7,
@@ -834,6 +864,141 @@
       "ErrorMessage": null,
       "CodeItemCount": 1,
       "CodeChunkCount": 1,
+      "IsReadSuccessfully": true
+    },
+    {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\FileScannerIntegrationTests.cs",
+      "RelativePath": "LegacyLens.Tests\\FileScannerIntegrationTests.cs",
+      "Extension": ".cs",
+      "SizeBytes": 7035,
+      "LineCount": 188,
+      "NonEmptyLineCount": 151,
+      "CodeItems": [
+        {
+          "Kind": "class",
+          "Name": "FileScannerIntegrationTests",
+          "LineNumber": 8,
+          "EndLineNumber": 33,
+          "Signature": "public class FileScannerIntegrationTests",
+          "LineCount": 26
+        },
+        {
+          "Kind": "class",
+          "Name": "InputField\u0022,",
+          "LineNumber": 34,
+          "EndLineNumber": 88,
+          "Signature": "\u0022method New(xValue) class InputField\u0022,",
+          "LineCount": 55
+        },
+        {
+          "Kind": "class",
+          "Name": "InputField\u0022,",
+          "LineNumber": 89,
+          "EndLineNumber": 123,
+          "Signature": "Assert.Contains(\u0022method New(xValue) class InputField\u0022, entry.CodeChunks[1].Text);",
+          "LineCount": 35
+        },
+        {
+          "Kind": "class",
+          "Name": "FileScanner\u0022,",
+          "LineNumber": 124,
+          "EndLineNumber": 131,
+          "Signature": "\u0022public class FileScanner\u0022,",
+          "LineCount": 8
+        },
+        {
+          "Kind": "record",
+          "Name": "ScanResult\u0022,",
+          "LineNumber": 132,
+          "EndLineNumber": 174,
+          "Signature": "\u0022internal sealed record ScanResult\u0022,",
+          "LineCount": 43
+        },
+        {
+          "Kind": "class",
+          "Name": "FileScanner\u0022,",
+          "LineNumber": 175,
+          "EndLineNumber": 177,
+          "Signature": "Assert.Contains(\u0022public class FileScanner\u0022, entry.CodeChunks[0].Text);",
+          "LineCount": 3
+        },
+        {
+          "Kind": "record",
+          "Name": "ScanResult\u0022,",
+          "LineNumber": 178,
+          "EndLineNumber": 188,
+          "Signature": "Assert.Contains(\u0022internal sealed record ScanResult\u0022, entry.CodeChunks[1].Text);",
+          "LineCount": 11
+        }
+      ],
+      "CodeChunks": [
+        {
+          "Id": "LegacyLens.Tests/FileScannerIntegrationTests.cs#class:FileScannerIntegrationTests:8-33",
+          "Kind": "class",
+          "Name": "FileScannerIntegrationTests",
+          "StartLineNumber": 8,
+          "EndLineNumber": 33,
+          "Text": "public class FileScannerIntegrationTests\r\n{\r\n    [TestMethod]\r\n    public void Scan_ShouldIndexRealisticHarbourFileWithCodeItemsAndChunks()\r\n    {\r\n        string rootPath = Path.Combine(\r\n            Path.GetTempPath(),\r\n            $\u0022LegacyLensTests_{Guid.NewGuid()}\u0022\r\n        );\r\n\r\n        try\r\n        {\r\n            Directory.CreateDirectory(rootPath);\r\n\r\n            string filePath = Path.Combine(rootPath, \u0022InputField.prg\u0022);\r\n\r\n            File.WriteAllLines(\r\n                filePath,\r\n                [\r\n                    \u0022#include \\\u0022hbclass.ch\\\u0022\u0022,\r\n                    \u0022\u0022,\r\n                    \u0022class InputField\u0022,\r\n                    \u0022    data xValue\u0022,\r\n                    \u0022    method New()\u0022,\r\n                    \u0022endclass\u0022,\r\n                    \u0022\u0022,",
+          "LineCount": 26
+        },
+        {
+          "Id": "LegacyLens.Tests/FileScannerIntegrationTests.cs#class:InputField\u0022,:34-88",
+          "Kind": "class",
+          "Name": "InputField\u0022,",
+          "StartLineNumber": 34,
+          "EndLineNumber": 88,
+          "Text": "                    \u0022method New(xValue) class InputField\u0022,\r\n                    \u0022    ::xValue := xValue\u0022,\r\n                    \u0022return Self\u0022,\r\n                    \u0022\u0022,\r\n                    \u0022function CreateInputField()\u0022,\r\n                    \u0022    return InputField():New(\u0027\u0027)\u0022\r\n                ]\r\n            );\r\n\r\n            ScannerOptions options = new ScannerOptions()\r\n            {\r\n                AllowedPatterns = [\u0022*.prg\u0022],\r\n                ExcludedDirectoryNames = [\u0022bin\u0022, \u0022obj\u0022, \u0022.git\u0022, \u0022.vs\u0022],\r\n                SearchOption = SearchOption.AllDirectories\r\n            };\r\n\r\n            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();\r\n            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();\r\n            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);\r\n\r\n            List\u003CFileIndexEntry\u003E entries = scanner.Scan(rootPath, options);\r\n\r\n            Assert.HasCount(1, entries);\r\n\r\n            FileIndexEntry entry = entries[0];\r\n\r\n            Assert.AreEqual(\u0022InputField.prg\u0022, entry.RelativePath);\r\n            Assert.AreEqual(\u0022.prg\u0022, entry.Extension);\r\n            Assert.AreEqual(13, entry.LineCount);\r\n            Assert.AreEqual(10, entry.NonEmptyLineCount);\r\n\r\n            Assert.AreEqual(\u0022InputField.prg#class:InputField:3-7\u0022, entry.CodeChunks[0].Id);\r\n            Assert.AreEqual(\u0022InputField.prg#method:New:8-11\u0022, entry.CodeChunks[1].Id);\r\n            Assert.AreEqual(\u0022InputField.prg#function:CreateInputField:12-13\u0022, entry.CodeChunks[2].Id);\r\n\r\n            Assert.HasCount(3, entry.CodeItems);\r\n\r\n            Assert.AreEqual(CodeItemKind.Class, entry.CodeItems[0].Kind);\r\n            Assert.AreEqual(\u0022InputField\u0022, entry.CodeItems[0].Name);\r\n            Assert.AreEqual(3, entry.CodeItems[0].LineNumber);\r\n\r\n            Assert.AreEqual(CodeItemKind.Method, entry.CodeItems[1].Kind);\r\n            Assert.AreEqual(\u0022New\u0022, entry.CodeItems[1].Name);\r\n            Assert.AreEqual(8, entry.CodeItems[1].LineNumber);\r\n\r\n            Assert.AreEqual(CodeItemKind.Function, entry.CodeItems[2].Kind);\r\n            Assert.AreEqual(\u0022CreateInputField\u0022, entry.CodeItems[2].Name);\r\n            Assert.AreEqual(12, entry.CodeItems[2].LineNumber);\r\n\r\n            Assert.HasCount(3, entry.CodeChunks);\r\n\r\n            Assert.AreEqual(\u0022InputField\u0022, entry.CodeChunks[0].Name);\r\n            Assert.Contains(\u0022class InputField\u0022, entry.CodeChunks[0].Text);\r\n\r\n            Assert.AreEqual(\u0022New\u0022, entry.CodeChunks[1].Name);",
+          "LineCount": 55
+        },
+        {
+          "Id": "LegacyLens.Tests/FileScannerIntegrationTests.cs#class:InputField\u0022,:89-123",
+          "Kind": "class",
+          "Name": "InputField\u0022,",
+          "StartLineNumber": 89,
+          "EndLineNumber": 123,
+          "Text": "            Assert.Contains(\u0022method New(xValue) class InputField\u0022, entry.CodeChunks[1].Text);\r\n\r\n            Assert.AreEqual(\u0022CreateInputField\u0022, entry.CodeChunks[2].Name);\r\n            Assert.Contains(\u0022function CreateInputField()\u0022, entry.CodeChunks[2].Text);\r\n        }\r\n        finally\r\n        {\r\n            if (Directory.Exists(rootPath))\r\n            {\r\n                Directory.Delete(rootPath, recursive: true);\r\n            }\r\n        }\r\n    }\r\n\r\n    [TestMethod]\r\n    public void Scan_ShouldIndexRealisticCSharpFileWithCodeItemsAndChunks()\r\n    {\r\n        string rootPath = Path.Combine(\r\n            Path.GetTempPath(),\r\n            $\u0022LegacyLensTests_{Guid.NewGuid()}\u0022\r\n        );\r\n\r\n        try\r\n        {\r\n            Directory.CreateDirectory(rootPath);\r\n\r\n            string filePath = Path.Combine(rootPath, \u0022FileScanner.cs\u0022);\r\n\r\n            File.WriteAllLines(\r\n                filePath,\r\n                [\r\n                    \u0022using LegacyLens.Models;\u0022,\r\n                    \u0022\u0022,\r\n                    \u0022namespace LegacyLens.Services;\u0022,\r\n                    \u0022\u0022,",
+          "LineCount": 35
+        },
+        {
+          "Id": "LegacyLens.Tests/FileScannerIntegrationTests.cs#class:FileScanner\u0022,:124-131",
+          "Kind": "class",
+          "Name": "FileScanner\u0022,",
+          "StartLineNumber": 124,
+          "EndLineNumber": 131,
+          "Text": "                    \u0022public class FileScanner\u0022,\r\n                    \u0022{\u0022,\r\n                    \u0022    public List\u003CFileIndexEntry\u003E Scan(string rootPath)\u0022,\r\n                    \u0022    {\u0022,\r\n                    \u0022        return new List\u003CFileIndexEntry\u003E();\u0022,\r\n                    \u0022    }\u0022,\r\n                    \u0022}\u0022,\r\n                    \u0022\u0022,",
+          "LineCount": 8
+        },
+        {
+          "Id": "LegacyLens.Tests/FileScannerIntegrationTests.cs#record:ScanResult\u0022,:132-174",
+          "Kind": "record",
+          "Name": "ScanResult\u0022,",
+          "StartLineNumber": 132,
+          "EndLineNumber": 174,
+          "Text": "                    \u0022internal sealed record ScanResult\u0022,\r\n                    \u0022{\u0022,\r\n                    \u0022    public required int FileCount { get; init; }\u0022,\r\n                    \u0022}\u0022\r\n                ]\r\n            );\r\n\r\n            ScannerOptions options = new ScannerOptions()\r\n            {\r\n                AllowedPatterns = [\u0022*.cs\u0022],\r\n                ExcludedDirectoryNames = [\u0022bin\u0022, \u0022obj\u0022, \u0022.git\u0022, \u0022.vs\u0022],\r\n                SearchOption = SearchOption.AllDirectories\r\n            };\r\n\r\n            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();\r\n            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();\r\n            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);\r\n\r\n            List\u003CFileIndexEntry\u003E entries = scanner.Scan(rootPath, options);\r\n\r\n            Assert.HasCount(1, entries);\r\n\r\n            FileIndexEntry entry = entries[0];\r\n\r\n            Assert.AreEqual(\u0022FileScanner.cs\u0022, entry.RelativePath);\r\n            Assert.AreEqual(\u0022.cs\u0022, entry.Extension);\r\n\r\n            Assert.AreEqual(\u0022FileScanner.cs#class:FileScanner:5-12\u0022, entry.CodeChunks[0].Id);\r\n            Assert.AreEqual(\u0022FileScanner.cs#record:ScanResult:13-16\u0022, entry.CodeChunks[1].Id);\r\n\r\n            Assert.HasCount(2, entry.CodeItems);\r\n\r\n            Assert.AreEqual(CodeItemKind.Class, entry.CodeItems[0].Kind);\r\n            Assert.AreEqual(\u0022FileScanner\u0022, entry.CodeItems[0].Name);\r\n            Assert.AreEqual(5, entry.CodeItems[0].LineNumber);\r\n\r\n            Assert.AreEqual(CodeItemKind.Record, entry.CodeItems[1].Kind);\r\n            Assert.AreEqual(\u0022ScanResult\u0022, entry.CodeItems[1].Name);\r\n            Assert.AreEqual(13, entry.CodeItems[1].LineNumber);\r\n\r\n            Assert.HasCount(2, entry.CodeChunks);\r\n\r\n            Assert.AreEqual(\u0022FileScanner\u0022, entry.CodeChunks[0].Name);",
+          "LineCount": 43
+        },
+        {
+          "Id": "LegacyLens.Tests/FileScannerIntegrationTests.cs#class:FileScanner\u0022,:175-177",
+          "Kind": "class",
+          "Name": "FileScanner\u0022,",
+          "StartLineNumber": 175,
+          "EndLineNumber": 177,
+          "Text": "            Assert.Contains(\u0022public class FileScanner\u0022, entry.CodeChunks[0].Text);\r\n\r\n            Assert.AreEqual(\u0022ScanResult\u0022, entry.CodeChunks[1].Name);",
+          "LineCount": 3
+        },
+        {
+          "Id": "LegacyLens.Tests/FileScannerIntegrationTests.cs#record:ScanResult\u0022,:178-188",
+          "Kind": "record",
+          "Name": "ScanResult\u0022,",
+          "StartLineNumber": 178,
+          "EndLineNumber": 188,
+          "Text": "            Assert.Contains(\u0022internal sealed record ScanResult\u0022, entry.CodeChunks[1].Text);\r\n        }\r\n        finally\r\n        {\r\n            if (Directory.Exists(rootPath))\r\n            {\r\n                Directory.Delete(rootPath, recursive: true);\r\n            }\r\n        }\r\n    }\r\n}",
+          "LineCount": 11
+        }
+      ],
+      "ErrorMessage": null,
+      "CodeItemCount": 7,
+      "CodeChunkCount": 7,
       "IsReadSuccessfully": true
     },
     {
@@ -927,6 +1092,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:FileScannerTests:8-21",
           "Kind": "class",
           "Name": "FileScannerTests",
           "StartLineNumber": 8,
@@ -935,6 +1101,7 @@
           "LineCount": 14
         },
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:Program:22-79",
           "Kind": "class",
           "Name": "Program",
           "StartLineNumber": 22,
@@ -943,6 +1110,7 @@
           "LineCount": 58
         },
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:MainClass:80-80",
           "Kind": "class",
           "Name": "MainClass",
           "StartLineNumber": 80,
@@ -951,6 +1119,7 @@
           "LineCount": 1
         },
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:GeneratedClass:81-81",
           "Kind": "class",
           "Name": "GeneratedClass",
           "StartLineNumber": 81,
@@ -959,6 +1128,7 @@
           "LineCount": 1
         },
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:CompiledClass:82-116",
           "Kind": "class",
           "Name": "CompiledClass",
           "StartLineNumber": 82,
@@ -967,6 +1137,7 @@
           "LineCount": 35
         },
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:Program\u0022,:117-154",
           "Kind": "class",
           "Name": "Program\u0022,",
           "StartLineNumber": 117,
@@ -975,6 +1146,7 @@
           "LineCount": 38
         },
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:Program\u0022,:155-176",
           "Kind": "class",
           "Name": "Program\u0022,",
           "StartLineNumber": 155,
@@ -983,6 +1155,7 @@
           "LineCount": 22
         },
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:FileScanner:177-218",
           "Kind": "class",
           "Name": "FileScanner",
           "StartLineNumber": 177,
@@ -991,6 +1164,7 @@
           "LineCount": 42
         },
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:Program:219-219",
           "Kind": "class",
           "Name": "Program",
           "StartLineNumber": 219,
@@ -999,6 +1173,7 @@
           "LineCount": 1
         },
         {
+          "Id": "LegacyLens.Tests/FileScannerTests.cs#class:FileScanner:220-255",
           "Kind": "class",
           "Name": "FileScanner",
           "StartLineNumber": 220,
@@ -1087,6 +1262,7 @@
       ],
       "CodeChunks": [
         {
+          "Id": "LegacyLens.Tests/IndexSummaryBuilderTests.cs#class:IndexSummaryBuilderTests:7-29",
           "Kind": "class",
           "Name": "IndexSummaryBuilderTests",
           "StartLineNumber": 7,
@@ -1095,6 +1271,7 @@
           "LineCount": 23
         },
         {
+          "Id": "LegacyLens.Tests/IndexSummaryBuilderTests.cs#class:TestClass\u0022:30-37",
           "Kind": "class",
           "Name": "TestClass\u0022",
           "StartLineNumber": 30,
@@ -1103,6 +1280,7 @@
           "LineCount": 8
         },
         {
+          "Id": "LegacyLens.Tests/IndexSummaryBuilderTests.cs#class:AnotherClass\u0022:38-59",
           "Kind": "class",
           "Name": "AnotherClass\u0022",
           "StartLineNumber": 38,
@@ -1111,6 +1289,7 @@
           "LineCount": 22
         },
         {
+          "Id": "LegacyLens.Tests/IndexSummaryBuilderTests.cs#class:TestClass\u0022:60-67",
           "Kind": "class",
           "Name": "TestClass\u0022",
           "StartLineNumber": 60,
@@ -1119,6 +1298,7 @@
           "LineCount": 8
         },
         {
+          "Id": "LegacyLens.Tests/IndexSummaryBuilderTests.cs#class:AnotherClass\u0022:68-75",
           "Kind": "class",
           "Name": "AnotherClass\u0022",
           "StartLineNumber": 68,
@@ -1127,6 +1307,7 @@
           "LineCount": 8
         },
         {
+          "Id": "LegacyLens.Tests/IndexSummaryBuilderTests.cs#class:AnotherClass\u0022:76-116",
           "Kind": "class",
           "Name": "AnotherClass\u0022",
           "StartLineNumber": 76,
@@ -1135,6 +1316,7 @@
           "LineCount": 41
         },
         {
+          "Id": "LegacyLens.Tests/IndexSummaryBuilderTests.cs#class:TestClass\u0022:117-124",
           "Kind": "class",
           "Name": "TestClass\u0022",
           "StartLineNumber": 117,
@@ -1143,6 +1325,7 @@
           "LineCount": 8
         },
         {
+          "Id": "LegacyLens.Tests/IndexSummaryBuilderTests.cs#class:AnotherClass\u0022:125-156",
           "Kind": "class",
           "Name": "AnotherClass\u0022",
           "StartLineNumber": 125,

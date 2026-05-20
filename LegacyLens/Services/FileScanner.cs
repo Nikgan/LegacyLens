@@ -128,7 +128,7 @@ public class FileScanner
             int lineCount = lines.Length;
             int nonEmptyLineCount = CountNonEmptyLines(lines);
             List<CodeItem> codeItems = _codeItemExtractor.Extract(extension, lines);
-            List<CodeChunk> codeChunks = _codeChunkBuilder.Build(codeItems, lines);
+            List<CodeChunk> codeChunks = _codeChunkBuilder.Build(relativePath, codeItems, lines);
 
             FileIndexEntry entry = new FileIndexEntry()
             {

@@ -62,6 +62,10 @@ public class FileScannerIntegrationTests
             Assert.AreEqual(13, entry.LineCount);
             Assert.AreEqual(10, entry.NonEmptyLineCount);
 
+            Assert.AreEqual("InputField.prg#class:InputField:3-7", entry.CodeChunks[0].Id);
+            Assert.AreEqual("InputField.prg#method:New:8-11", entry.CodeChunks[1].Id);
+            Assert.AreEqual("InputField.prg#function:CreateInputField:12-13", entry.CodeChunks[2].Id);
+
             Assert.HasCount(3, entry.CodeItems);
 
             Assert.AreEqual(CodeItemKind.Class, entry.CodeItems[0].Kind);
@@ -151,6 +155,9 @@ public class FileScannerIntegrationTests
 
             Assert.AreEqual("FileScanner.cs", entry.RelativePath);
             Assert.AreEqual(".cs", entry.Extension);
+
+            Assert.AreEqual("FileScanner.cs#class:FileScanner:5-12", entry.CodeChunks[0].Id);
+            Assert.AreEqual("FileScanner.cs#record:ScanResult:13-16", entry.CodeChunks[1].Id);
 
             Assert.HasCount(2, entry.CodeItems);
 

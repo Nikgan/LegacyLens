@@ -4,7 +4,7 @@ namespace LegacyLens.Services;
 
 public class CodeChunkBuilder
 {
-    public List<CodeChunk> Build(List<CodeItem> codeItems, string[] lines)
+    public List<CodeChunk> Build(string relativePath, List<CodeItem> codeItems, string[] lines)
     {
         List<CodeChunk> codeChunks = new List<CodeChunk>();
 
@@ -18,6 +18,7 @@ public class CodeChunkBuilder
 
             CodeChunk codeChunk = new CodeChunk()
             {
+                Id = BuildChunkId(relativePath, codeItem),
                 Kind = codeItem.Kind,
                 Name = codeItem.Name,
                 StartLineNumber = codeItem.LineNumber,
@@ -29,6 +30,22 @@ public class CodeChunkBuilder
         }
 
         return codeChunks;
+    }
+
+    private static string BuildChunkId(string relativePath, CodeItem codeItem)
+    {
+        string normalizedPath = NormalizePath(relativePath);
+        string kindText = codeItem.Kind.ToString().ToLowerInvariant();
+        string nameText = string.IsNullOrWhiteSpace(codeItem.Name)
+            ? "unknown"
+            : codeItem.Name;
+
+        return $"{normalizedPath}#{kindText}:{nameText}:{codeItem.LineNumber}-{codeItem.EndLineNumber}";
+    }
+
+    private static string NormalizePath(string path)
+    {
+        return path.Replace('\\', '/');
     }
 
     private static string GetTextRange(string[] lines, int startLineNumber, int endLineNumber)

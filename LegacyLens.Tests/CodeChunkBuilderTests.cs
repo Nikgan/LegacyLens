@@ -32,10 +32,11 @@ public class CodeChunkBuilderTests
             }
         ];
 
-        List<CodeChunk> codeChunks = builder.Build(codeItems, lines);
+        List<CodeChunk> codeChunks = builder.Build("InputField.prg", codeItems, lines);
 
         Assert.HasCount(1, codeChunks);
 
+        Assert.AreEqual("InputField.prg#function:GetPrice:1-3", codeChunks[0].Id);
         Assert.AreEqual(CodeItemKind.Function, codeChunks[0].Kind);
         Assert.AreEqual("GetPrice", codeChunks[0].Name);
         Assert.AreEqual(1, codeChunks[0].StartLineNumber);
@@ -67,8 +68,36 @@ public class CodeChunkBuilderTests
 
         List<CodeItem> codeItems = new List<CodeItem>();
 
-        List<CodeChunk> codeChunks = builder.Build(codeItems, lines);
+        List<CodeChunk> codeChunks = builder.Build("test.prg", codeItems, lines);
 
         Assert.HasCount(0, codeChunks);
+    }
+    [TestMethod]
+    public void Build_ShouldNormalizeWindowsPathInChunkId()
+    {
+        CodeChunkBuilder builder = new CodeChunkBuilder();
+
+        string[] lines =
+        [
+            "function GetPrice()",
+        "return 10"
+        ];
+
+        List<CodeItem> codeItems =
+        [
+            new CodeItem()
+        {
+            Kind = CodeItemKind.Function,
+            Name = "GetPrice",
+            LineNumber = 1,
+            EndLineNumber = 2,
+            Signature = "function GetPrice()"
+        }
+        ];
+
+        List<CodeChunk> codeChunks = builder.Build(@"utils\priceUtils.prg", codeItems, lines);
+
+        Assert.HasCount(1, codeChunks);
+        Assert.AreEqual("utils/priceUtils.prg#function:GetPrice:1-2", codeChunks[0].Id);
     }
 }
