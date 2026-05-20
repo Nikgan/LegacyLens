@@ -22,8 +22,8 @@ public class ApiIntegrationTests
 
         string responseText = await response.Content.ReadAsStringAsync();
 
-        StringAssert.Contains(responseText, "LegacyLens.Api");
-        StringAssert.Contains(responseText, "ok");
+        Assert.Contains("LegacyLens.Api", responseText);
+        Assert.Contains("ok", responseText);
     }
 
     [TestMethod]
@@ -47,11 +47,11 @@ public class ApiIntegrationTests
                 ]
             );
 
-            await using WebApplicationFactory<Program> factory = new WebApplicationFactory<Program>();
+            await using WebApplicationFactory<Program> factory = new();
 
             HttpClient client = factory.CreateClient();
 
-            IndexRequest request = new IndexRequest()
+            IndexRequest request = new()
             {
                 RootPath = rootPath,
                 Recursive = true
@@ -59,12 +59,13 @@ public class ApiIntegrationTests
 
             HttpResponseMessage response = await client.PostAsJsonAsync(
                 "/index/summary",
-                request
+                request,
+                cancellationToken: TestContext.CancellationToken
             );
 
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 
-            IndexSummary? summary = await response.Content.ReadFromJsonAsync<IndexSummary>();
+            IndexSummary? summary = await response.Content.ReadFromJsonAsync<IndexSummary>(TestContext.CancellationToken);
 
             Assert.IsNotNull(summary);
             Assert.AreEqual(1, summary.FileCount);
@@ -90,7 +91,7 @@ public class ApiIntegrationTests
 
         HttpClient client = factory.CreateClient();
 
-        IndexRequest request = new IndexRequest()
+        IndexRequest request = new()
         {
             RootPath = Path.Combine(
                 Path.GetTempPath(),
@@ -101,14 +102,46 @@ public class ApiIntegrationTests
 
         HttpResponseMessage response = await client.PostAsJsonAsync(
             "/index",
-            request
-        );
+            request,
+            cancellationToken: TestContext.CancellationToken
+            );
 
         Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
 
-        ApiError? error = await response.Content.ReadFromJsonAsync<ApiError>();
+        ApiError? error = await response.Content.ReadFromJsonAsync<ApiError>(TestContext.CancellationToken);
 
         Assert.IsNotNull(error);
-        StringAssert.Contains(error.Error, "Directory not found");
+        Assert.Contains("Directory not found", error.Error);
+    }
+
+    public TestContext TestContext { get; set; }
+
+    [TestMethod]
+    public async Task Index_ShouldReturnBadRequestWhenRootPathIsEmpty()
+    {
+        await using WebApplicationFactory<Program> factory = new();
+
+        HttpClient client = factory.CreateClient();
+
+        IndexRequest request = new()
+        {
+            RootPath = "",
+            Recursive = true
+        };
+
+        HttpResponseMessage response = await client.PostAsJsonAsync(
+            "/index",
+            request,
+            cancellationToken: TestContext.CancellationToken
+        );
+
+        Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
+
+        ApiError? error = await response.Content.ReadFromJsonAsync<ApiError>(
+            TestContext.CancellationToken
+        );
+
+        Assert.IsNotNull(error);
+        Assert.Contains("RootPath is required", error.Error);
     }
 }
