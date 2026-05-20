@@ -6,10 +6,12 @@ public class IndexSummaryBuilder
 {
     public IndexSummary Build(List<FileIndexEntry> entries)
     {
+        int fileCount = entries.Count;
         int readErrorCount = 0;
         int totalLineCount = 0;
         int totalNonEmptyLineCount = 0;
-        int TotalCodeItemCount = 0;
+        int totalCodeItemCount = 0;
+        int totalCodeChunkCount = 0;
         long totalSizeBytes = 0;
 
         foreach (FileIndexEntry entry in entries)
@@ -21,16 +23,18 @@ public class IndexSummaryBuilder
 
             totalLineCount += entry.LineCount;
             totalNonEmptyLineCount += entry.NonEmptyLineCount;
-            TotalCodeItemCount += entry.CodeItemCount;
+            totalCodeItemCount += entry.CodeItemCount;
+            totalCodeChunkCount += entry.CodeChunkCount;
             totalSizeBytes += entry.SizeBytes;
         }
 
         IndexSummary summary = new IndexSummary(
-            entries.Count,
+            fileCount,
             readErrorCount,
             totalLineCount,
             totalNonEmptyLineCount,
-            TotalCodeItemCount,
+            totalCodeItemCount,
+            totalCodeChunkCount,
             totalSizeBytes
         );
 

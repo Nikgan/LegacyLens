@@ -1,4 +1,6 @@
 using LegacyLens.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace LegacyLens.Services;
 
@@ -23,7 +25,8 @@ public class CodeChunkBuilder
                 Name = codeItem.Name,
                 StartLineNumber = codeItem.LineNumber,
                 EndLineNumber = codeItem.EndLineNumber,
-                Text = text
+                Text = text,
+                ContentHash = CalculateSha256(text)
             };
 
             codeChunks.Add(codeChunk);
@@ -66,5 +69,12 @@ public class CodeChunkBuilder
         }
 
         return string.Join(Environment.NewLine, selectedLines);
+    }
+    private static string CalculateSha256(string text)
+    {
+        byte[] bytes = Encoding.UTF8.GetBytes(text);
+        byte[] hashBytes = SHA256.HashData(bytes);
+
+        return Convert.ToHexString(hashBytes).ToLowerInvariant();
     }
 }

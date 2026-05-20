@@ -23,7 +23,8 @@ public class ConsoleIndexReporter
         Console.WriteLine($"Files: {codebaseIndex.Summary.FileCount}");
         Console.WriteLine($"Lines: {codebaseIndex.Summary.TotalLineCount}");
         Console.WriteLine($"Non-empty lines: {codebaseIndex.Summary.TotalNonEmptyLineCount}");
-        Console.WriteLine($"Code items: {codebaseIndex.Summary.totalCodeItemCount}");
+        Console.WriteLine($"Code items: {codebaseIndex.Summary.TotalCodeItemCount}");
+        Console.WriteLine($"Code chunks: {codebaseIndex.Summary.TotalCodeChunkCount}");
         Console.WriteLine($"Size: {codebaseIndex.Summary.TotalSizeBytes} bytes");
         Console.WriteLine($"Read errors: {codebaseIndex.Summary.ReadErrorCount}");
     }

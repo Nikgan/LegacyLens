@@ -36,9 +36,13 @@ public class CodeChunkBuilderTests
 
         Assert.HasCount(1, codeChunks);
 
+        Assert.IsFalse(string.IsNullOrWhiteSpace(codeChunks[0].ContentHash));
+        Assert.AreEqual(64, codeChunks[0].ContentHash.Length);
+
         Assert.AreEqual("InputField.prg#function:GetPrice:1-3", codeChunks[0].Id);
         Assert.AreEqual(CodeItemKind.Function, codeChunks[0].Kind);
         Assert.AreEqual("GetPrice", codeChunks[0].Name);
+
         Assert.AreEqual(1, codeChunks[0].StartLineNumber);
         Assert.AreEqual(3, codeChunks[0].EndLineNumber);
         Assert.AreEqual(3, codeChunks[0].LineCount);
