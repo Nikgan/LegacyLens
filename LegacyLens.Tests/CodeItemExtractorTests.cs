@@ -112,4 +112,63 @@ public class CodeItemExtractorTests
         Assert.AreEqual(CodeItemKind.Record, codeItems[3].Kind);
         Assert.AreEqual("Point", codeItems[3].Name);
     }
+
+    [TestMethod]
+    public void Extract_ShouldFindHarbourClass()
+    {
+        CodeItemExtractor extractor = new CodeItemExtractor();
+
+        string[] lines =
+        [
+            "class InputField",
+        "method New() class InputField",
+        "function GetPrice()"
+        ];
+
+        List<CodeItem> codeItems = extractor.Extract(".prg", lines);
+
+        Assert.HasCount(3, codeItems);
+
+        Assert.AreEqual(CodeItemKind.Class, codeItems[0].Kind);
+        Assert.AreEqual("InputField", codeItems[0].Name);
+        Assert.AreEqual(1, codeItems[0].LineNumber);
+
+        Assert.AreEqual(CodeItemKind.Method, codeItems[1].Kind);
+        Assert.AreEqual("New", codeItems[1].Name);
+        Assert.AreEqual(2, codeItems[1].LineNumber);
+
+        Assert.AreEqual(CodeItemKind.Function, codeItems[2].Kind);
+        Assert.AreEqual("GetPrice", codeItems[2].Name);
+        Assert.AreEqual(3, codeItems[2].LineNumber);
+    }
+    [TestMethod]
+    public void Extract_ShouldCalculateCodeItemEndLineNumbers()
+    {
+        CodeItemExtractor extractor = new CodeItemExtractor();
+
+        string[] lines =
+        [
+            "function First()",
+        "    ? 'first line'",
+        "    ? 'second line'",
+        "",
+        "function Second()",
+        "    ? 'another line'",
+        "return nil"
+        ];
+
+        List<CodeItem> codeItems = extractor.Extract(".prg", lines);
+
+        Assert.HasCount(2, codeItems);
+
+        Assert.AreEqual("First", codeItems[0].Name);
+        Assert.AreEqual(1, codeItems[0].LineNumber);
+        Assert.AreEqual(4, codeItems[0].EndLineNumber);
+        Assert.AreEqual(4, codeItems[0].LineCount);
+
+        Assert.AreEqual("Second", codeItems[1].Name);
+        Assert.AreEqual(5, codeItems[1].LineNumber);
+        Assert.AreEqual(7, codeItems[1].EndLineNumber);
+        Assert.AreEqual(3, codeItems[1].LineCount);
+    }
 }

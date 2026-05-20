@@ -1,13 +1,13 @@
 {
   "RootPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens",
-  "CreatedAt": "2026-05-20T08:13:01.8113481Z",
+  "CreatedAt": "2026-05-20T08:32:03.5061186Z",
   "Summary": {
     "FileCount": 22,
     "ReadErrorCount": 0,
-    "TotalLineCount": 1365,
-    "TotalNonEmptyLineCount": 1131,
-    "totalCodeItemCount": 19,
-    "TotalSizeBytes": 40838
+    "TotalLineCount": 1504,
+    "TotalNonEmptyLineCount": 1240,
+    "totalCodeItemCount": 45,
+    "TotalSizeBytes": 45257
   },
   "Files": [
     {
@@ -46,7 +46,9 @@
           "Kind": "record",
           "Name": "CodebaseIndex",
           "LineNumber": 3,
-          "Signature": "public record CodebaseIndex("
+          "EndLineNumber": 8,
+          "Signature": "public record CodebaseIndex(",
+          "LineCount": 6
         }
       ],
       "ErrorMessage": null,
@@ -57,15 +59,17 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\CodeItem.cs",
       "RelativePath": "LegacyLens\\Models\\CodeItem.cs",
       "Extension": ".cs",
-      "SizeBytes": 266,
-      "LineCount": 9,
-      "NonEmptyLineCount": 8,
+      "SizeBytes": 383,
+      "LineCount": 12,
+      "NonEmptyLineCount": 10,
       "CodeItems": [
         {
           "Kind": "record",
           "Name": "CodeItem",
           "LineNumber": 3,
-          "Signature": "public record CodeItem"
+          "EndLineNumber": 12,
+          "Signature": "public record CodeItem",
+          "LineCount": 10
         }
       ],
       "ErrorMessage": null,
@@ -96,7 +100,9 @@
           "Kind": "record",
           "Name": "FileIndexEntry",
           "LineNumber": 3,
-          "Signature": "public record FileIndexEntry"
+          "EndLineNumber": 15,
+          "Signature": "public record FileIndexEntry",
+          "LineCount": 13
         }
       ],
       "ErrorMessage": null,
@@ -115,7 +121,9 @@
           "Kind": "record",
           "Name": "IndexSummary",
           "LineNumber": 3,
-          "Signature": "public record IndexSummary("
+          "EndLineNumber": 10,
+          "Signature": "public record IndexSummary(",
+          "LineCount": 8
         }
       ],
       "ErrorMessage": null,
@@ -134,7 +142,9 @@
           "Kind": "record",
           "Name": "CommandLineOptions",
           "LineNumber": 3,
-          "Signature": "public record CommandLineOptions"
+          "EndLineNumber": 9,
+          "Signature": "public record CommandLineOptions",
+          "LineCount": 7
         }
       ],
       "ErrorMessage": null,
@@ -153,7 +163,9 @@
           "Kind": "record",
           "Name": "ScannerOptions",
           "LineNumber": 3,
-          "Signature": "public record ScannerOptions"
+          "EndLineNumber": 8,
+          "Signature": "public record ScannerOptions",
+          "LineCount": 6
         }
       ],
       "ErrorMessage": null,
@@ -172,7 +184,9 @@
           "Kind": "class",
           "Name": "CodebaseIndexBuilder",
           "LineNumber": 6,
-          "Signature": "public class CodebaseIndexBuilder"
+          "EndLineNumber": 33,
+          "Signature": "public class CodebaseIndexBuilder",
+          "LineCount": 28
         }
       ],
       "ErrorMessage": null,
@@ -183,15 +197,17 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\CodeItemExtractor.cs",
       "RelativePath": "LegacyLens\\Services\\CodeItemExtractor.cs",
       "Extension": ".cs",
-      "SizeBytes": 4697,
-      "LineCount": 170,
-      "NonEmptyLineCount": 137,
+      "SizeBytes": 5775,
+      "LineCount": 211,
+      "NonEmptyLineCount": 168,
       "CodeItems": [
         {
           "Kind": "class",
           "Name": "CodeItemExtractor",
           "LineNumber": 5,
-          "Signature": "public class CodeItemExtractor"
+          "EndLineNumber": 211,
+          "Signature": "public class CodeItemExtractor",
+          "LineCount": 207
         }
       ],
       "ErrorMessage": null,
@@ -210,7 +226,9 @@
           "Kind": "class",
           "Name": "CommandLineOptionsParser",
           "LineNumber": 5,
-          "Signature": "public class CommandLineOptionsParser"
+          "EndLineNumber": 116,
+          "Signature": "public class CommandLineOptionsParser",
+          "LineCount": 112
         }
       ],
       "ErrorMessage": null,
@@ -229,7 +247,9 @@
           "Kind": "class",
           "Name": "ConsoleIndexReporter",
           "LineNumber": 5,
-          "Signature": "public class ConsoleIndexReporter"
+          "EndLineNumber": 30,
+          "Signature": "public class ConsoleIndexReporter",
+          "LineCount": 26
         }
       ],
       "ErrorMessage": null,
@@ -248,7 +268,9 @@
           "Kind": "class",
           "Name": "FileScanner",
           "LineNumber": 6,
-          "Signature": "public class FileScanner"
+          "EndLineNumber": 174,
+          "Signature": "public class FileScanner",
+          "LineCount": 169
         }
       ],
       "ErrorMessage": null,
@@ -267,7 +289,9 @@
           "Kind": "class",
           "Name": "HelpTextPrinter",
           "LineNumber": 3,
-          "Signature": "public class HelpTextPrinter"
+          "EndLineNumber": 26,
+          "Signature": "public class HelpTextPrinter",
+          "LineCount": 24
         }
       ],
       "ErrorMessage": null,
@@ -286,7 +310,9 @@
           "Kind": "class",
           "Name": "IndexJsonWriter",
           "LineNumber": 7,
-          "Signature": "public class IndexJsonWriter"
+          "EndLineNumber": 31,
+          "Signature": "public class IndexJsonWriter",
+          "LineCount": 25
         }
       ],
       "ErrorMessage": null,
@@ -305,7 +331,9 @@
           "Kind": "class",
           "Name": "IndexSummaryBuilder",
           "LineNumber": 5,
-          "Signature": "public class IndexSummaryBuilder"
+          "EndLineNumber": 39,
+          "Signature": "public class IndexSummaryBuilder",
+          "LineCount": 35
         }
       ],
       "ErrorMessage": null,
@@ -316,19 +344,109 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\CodeItemExtractorTests.cs",
       "RelativePath": "LegacyLens.Tests\\CodeItemExtractorTests.cs",
       "Extension": ".cs",
-      "SizeBytes": 2698,
-      "LineCount": 86,
-      "NonEmptyLineCount": 67,
+      "SizeBytes": 5618,
+      "LineCount": 174,
+      "NonEmptyLineCount": 136,
       "CodeItems": [
         {
           "Kind": "class",
           "Name": "CodeItemExtractorTests",
           "LineNumber": 7,
-          "Signature": "public class CodeItemExtractorTests"
+          "EndLineNumber": 15,
+          "Signature": "public class CodeItemExtractorTests",
+          "LineCount": 9
+        },
+        {
+          "Kind": "class",
+          "Name": "FileScanner\u0022,",
+          "LineNumber": 16,
+          "EndLineNumber": 16,
+          "Signature": "\u0022public class FileScanner\u0022,",
+          "LineCount": 1
+        },
+        {
+          "Kind": "record",
+          "Name": "CodebaseIndex\u0022,",
+          "LineNumber": 17,
+          "EndLineNumber": 17,
+          "Signature": "\u0022internal record CodebaseIndex\u0022,",
+          "LineCount": 1
+        },
+        {
+          "Kind": "interface",
+          "Name": "IIndexWriter\u0022",
+          "LineNumber": 18,
+          "EndLineNumber": 46,
+          "Signature": "\u0022public interface IIndexWriter\u0022",
+          "LineCount": 29
+        },
+        {
+          "Kind": "class",
+          "Name": "InputField\u0022",
+          "LineNumber": 47,
+          "EndLineNumber": 75,
+          "Signature": "\u0022method New() class InputField\u0022",
+          "LineCount": 29
+        },
+        {
+          "Kind": "class",
+          "Name": "FakeClass\u0022,",
+          "LineNumber": 76,
+          "EndLineNumber": 76,
+          "Signature": "\u0022// public class FakeClass\u0022,",
+          "LineCount": 1
+        },
+        {
+          "Kind": "class",
+          "Name": "RealClass\u0022",
+          "LineNumber": 77,
+          "EndLineNumber": 92,
+          "Signature": "\u0022public class RealClass\u0022",
+          "LineCount": 16
+        },
+        {
+          "Kind": "class",
+          "Name": "StringUtils\u0022,",
+          "LineNumber": 93,
+          "EndLineNumber": 93,
+          "Signature": "\u0022public static class StringUtils\u0022,",
+          "LineCount": 1
+        },
+        {
+          "Kind": "record",
+          "Name": "UserDto\u0022,",
+          "LineNumber": 94,
+          "EndLineNumber": 94,
+          "Signature": "\u0022internal sealed record UserDto\u0022,",
+          "LineCount": 1
+        },
+        {
+          "Kind": "class",
+          "Name": "FileScanner\u0022,",
+          "LineNumber": 95,
+          "EndLineNumber": 95,
+          "Signature": "\u0022public partial class FileScanner\u0022,",
+          "LineCount": 1
+        },
+        {
+          "Kind": "record",
+          "Name": "Point\u0022",
+          "LineNumber": 96,
+          "EndLineNumber": 123,
+          "Signature": "\u0022public readonly record struct Point\u0022",
+          "LineCount": 28
+        },
+        {
+          "Kind": "class",
+          "Name": "InputField\u0022,",
+          "LineNumber": 124,
+          "EndLineNumber": 174,
+          "Signature": "\u0022method New() class InputField\u0022,",
+          "LineCount": 51
         }
       ],
       "ErrorMessage": null,
-      "CodeItemCount": 1,
+      "CodeItemCount": 12,
       "IsReadSuccessfully": true
     },
     {
@@ -343,7 +461,9 @@
           "Kind": "class",
           "Name": "CommandLineOptionsParserTests",
           "LineNumber": 7,
-          "Signature": "public class CommandLineOptionsParserTests"
+          "EndLineNumber": 90,
+          "Signature": "public class CommandLineOptionsParserTests",
+          "LineCount": 84
         }
       ],
       "ErrorMessage": null,
@@ -362,36 +482,162 @@
           "Kind": "class",
           "Name": "FileScannerTests",
           "LineNumber": 8,
-          "Signature": "public class FileScannerTests"
+          "EndLineNumber": 21,
+          "Signature": "public class FileScannerTests",
+          "LineCount": 14
         },
         {
           "Kind": "class",
           "Name": "Program",
           "LineNumber": 22,
-          "Signature": "public class Program"
+          "EndLineNumber": 78,
+          "Signature": "public class Program",
+          "LineCount": 57
+        },
+        {
+          "Kind": "class",
+          "Name": "MainClass",
+          "LineNumber": 79,
+          "EndLineNumber": 79,
+          "Signature": "File.WriteAllText(normalFilePath, \u0022public class MainClass { }\u0022);",
+          "LineCount": 1
+        },
+        {
+          "Kind": "class",
+          "Name": "GeneratedClass",
+          "LineNumber": 80,
+          "EndLineNumber": 80,
+          "Signature": "File.WriteAllText(objFilePath, \u0022public class GeneratedClass { }\u0022);",
+          "LineCount": 1
+        },
+        {
+          "Kind": "class",
+          "Name": "CompiledClass",
+          "LineNumber": 81,
+          "EndLineNumber": 114,
+          "Signature": "File.WriteAllText(binFilePath, \u0022public class CompiledClass { }\u0022);",
+          "LineCount": 34
+        },
+        {
+          "Kind": "class",
+          "Name": "Program\u0022,",
+          "LineNumber": 115,
+          "EndLineNumber": 150,
+          "Signature": "\u0022public class Program\u0022,",
+          "LineCount": 36
+        },
+        {
+          "Kind": "class",
+          "Name": "Program\u0022,",
+          "LineNumber": 151,
+          "EndLineNumber": 172,
+          "Signature": "Assert.AreEqual(\u0022public class Program\u0022, entry.CodeItems[0].Signature);",
+          "LineCount": 22
+        },
+        {
+          "Kind": "class",
+          "Name": "FileScanner",
+          "LineNumber": 173,
+          "EndLineNumber": 213,
+          "Signature": "File.WriteAllText(sourceFilePath, \u0022public class FileScanner { }\u0022);",
+          "LineCount": 41
+        },
+        {
+          "Kind": "class",
+          "Name": "Program",
+          "LineNumber": 214,
+          "EndLineNumber": 214,
+          "Signature": "File.WriteAllText(rootFilePath, \u0022public class Program { }\u0022);",
+          "LineCount": 1
+        },
+        {
+          "Kind": "class",
+          "Name": "FileScanner",
+          "LineNumber": 215,
+          "EndLineNumber": 249,
+          "Signature": "File.WriteAllText(nestedFilePath, \u0022public class FileScanner { }\u0022);",
+          "LineCount": 35
         }
       ],
       "ErrorMessage": null,
-      "CodeItemCount": 2,
+      "CodeItemCount": 10,
       "IsReadSuccessfully": true
     },
     {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\IndexSummaryBuilderTests.cs",
       "RelativePath": "LegacyLens.Tests\\IndexSummaryBuilderTests.cs",
       "Extension": ".cs",
-      "SizeBytes": 4949,
-      "LineCount": 145,
-      "NonEmptyLineCount": 136,
+      "SizeBytes": 5253,
+      "LineCount": 152,
+      "NonEmptyLineCount": 143,
       "CodeItems": [
         {
           "Kind": "class",
           "Name": "IndexSummaryBuilderTests",
           "LineNumber": 7,
-          "Signature": "public class IndexSummaryBuilderTests"
+          "EndLineNumber": 29,
+          "Signature": "public class IndexSummaryBuilderTests",
+          "LineCount": 23
+        },
+        {
+          "Kind": "class",
+          "Name": "TestClass\u0022",
+          "LineNumber": 30,
+          "EndLineNumber": 37,
+          "Signature": "Signature = \u0022public class TestClass\u0022",
+          "LineCount": 8
+        },
+        {
+          "Kind": "class",
+          "Name": "AnotherClass\u0022",
+          "LineNumber": 38,
+          "EndLineNumber": 58,
+          "Signature": "Signature = \u0022public class AnotherClass\u0022",
+          "LineCount": 21
+        },
+        {
+          "Kind": "class",
+          "Name": "TestClass\u0022",
+          "LineNumber": 59,
+          "EndLineNumber": 66,
+          "Signature": "Signature = \u0022public class TestClass\u0022",
+          "LineCount": 8
+        },
+        {
+          "Kind": "class",
+          "Name": "AnotherClass\u0022",
+          "LineNumber": 67,
+          "EndLineNumber": 74,
+          "Signature": "Signature = \u0022public class AnotherClass\u0022",
+          "LineCount": 8
+        },
+        {
+          "Kind": "class",
+          "Name": "AnotherClass\u0022",
+          "LineNumber": 75,
+          "EndLineNumber": 114,
+          "Signature": "Signature = \u0022public class AnotherClass\u0022",
+          "LineCount": 40
+        },
+        {
+          "Kind": "class",
+          "Name": "TestClass\u0022",
+          "LineNumber": 115,
+          "EndLineNumber": 122,
+          "Signature": "Signature = \u0022public class TestClass\u0022",
+          "LineCount": 8
+        },
+        {
+          "Kind": "class",
+          "Name": "AnotherClass\u0022",
+          "LineNumber": 123,
+          "EndLineNumber": 152,
+          "Signature": "Signature = \u0022public class AnotherClass\u0022",
+          "LineCount": 30
         }
       ],
       "ErrorMessage": null,
-      "CodeItemCount": 1,
+      "CodeItemCount": 8,
       "IsReadSuccessfully": true
     },
     {

@@ -26,6 +26,7 @@ public class IndexSummaryBuilderTests
                         Kind = CodeItemKind.Class,
                         Name = "TestClass",
                         LineNumber = 1,
+                        EndLineNumber = 9,
                         Signature = "public class TestClass"
                     },
                     new CodeItem()
@@ -33,6 +34,7 @@ public class IndexSummaryBuilderTests
                         Kind = CodeItemKind.Class,
                         Name = "AnotherClass",
                         LineNumber = 10,
+                        EndLineNumber = 12,
                         Signature = "public class AnotherClass"
                     }
                 },
@@ -53,6 +55,7 @@ public class IndexSummaryBuilderTests
                         Kind = CodeItemKind.Class,
                         Name = "TestClass",
                         LineNumber = 1,
+                        EndLineNumber = 9,
                         Signature = "public class TestClass"
                     },
                     new CodeItem()
@@ -60,13 +63,15 @@ public class IndexSummaryBuilderTests
                         Kind = CodeItemKind.Class,
                         Name = "AnotherClass",
                         LineNumber = 10,
+                        EndLineNumber = 15,
                         Signature = "public class AnotherClass"
                     },
                     new CodeItem()
                     {
                         Kind = CodeItemKind.Class,
                         Name = "Another3Class",
-                        LineNumber = 11,
+                        LineNumber = 16,
+                        EndLineNumber = 19,
                         Signature = "public class AnotherClass"
                     }
                 },
@@ -106,6 +111,7 @@ public class IndexSummaryBuilderTests
                     Kind = CodeItemKind.Class,
                     Name = "TestClass",
                     LineNumber = 1,
+                    EndLineNumber = 9,
                     Signature = "public class TestClass"
                 },
                 new CodeItem()
@@ -113,6 +119,7 @@ public class IndexSummaryBuilderTests
                     Kind = CodeItemKind.Class,
                     Name = "AnotherClass",
                     LineNumber = 10,
+                    EndLineNumber = 14,
                     Signature = "public class AnotherClass"
                 }
             },

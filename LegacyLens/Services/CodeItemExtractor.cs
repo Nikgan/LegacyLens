@@ -40,11 +40,16 @@ public class CodeItemExtractor
             }
         }
 
-        return codeItems;
+        return ApplyEndLineNumbers(codeItems, lines.Length);
     }
 
     private static CodeItem? TryCreateHarbourCodeItem(string line, int lineNumber)
     {
+        if (line.StartsWith("class ", StringComparison.OrdinalIgnoreCase))
+        {
+            return CreateCodeItem(CodeItemKind.Class, line, lineNumber);
+        }
+
         if (line.StartsWith("function ", StringComparison.OrdinalIgnoreCase))
         {
             return CreateCodeItem(CodeItemKind.Function, line, lineNumber);
@@ -106,6 +111,7 @@ public class CodeItemExtractor
             Kind = kind,
             Name = name,
             LineNumber = lineNumber,
+            EndLineNumber = lineNumber,
             Signature = signature
         };
 
@@ -175,5 +181,31 @@ public class CodeItemExtractor
         }
 
         return name.Trim('{', ':', ';');
+    }
+    private static List<CodeItem> ApplyEndLineNumbers(List<CodeItem> codeItems, int totalLineCount)
+    {
+        List<CodeItem> result = new List<CodeItem>();
+
+        for (int i = 0; i < codeItems.Count; i++)
+        {
+            CodeItem currentCodeItem = codeItems[i];
+
+            int endLineNumber = totalLineCount;
+
+            if (i + 1 < codeItems.Count)
+            {
+                CodeItem nextCodeItem = codeItems[i + 1];
+                endLineNumber = nextCodeItem.LineNumber - 1;
+            }
+
+            CodeItem updatedCodeItem = currentCodeItem with
+            {
+                EndLineNumber = endLineNumber
+            };
+
+            result.Add(updatedCodeItem);
+        }
+
+        return result;
     }
 }
