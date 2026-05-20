@@ -1,5 +1,6 @@
 using System.Text.Json;
 using LegacyLens.Models;
+using System.Text.Json.Serialization;
 
 namespace LegacyLens.Services;
 
@@ -11,6 +12,8 @@ public class IndexJsonWriter
         {
             WriteIndented = true
         };
+
+        jsonOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
 
         string? outputDirectoryPath = Path.GetDirectoryName(outputPath);
 

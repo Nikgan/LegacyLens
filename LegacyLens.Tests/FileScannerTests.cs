@@ -145,7 +145,7 @@ public class FileScannerTests
 			Assert.AreEqual(6, entry.NonEmptyLineCount);
 			Assert.AreEqual(1, entry.CodeItemCount);
             Assert.HasCount(1, entry.CodeItems);
-            Assert.AreEqual("class", entry.CodeItems[0].Kind);
+            Assert.AreEqual(CodeItemKind.Class, entry.CodeItems[0].Kind);
             Assert.AreEqual("Program", entry.CodeItems[0].Name);
             Assert.AreEqual(1, entry.CodeItems[0].LineNumber);
             Assert.AreEqual("public class Program", entry.CodeItems[0].Signature);

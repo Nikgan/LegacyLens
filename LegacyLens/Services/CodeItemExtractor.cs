@@ -47,17 +47,17 @@ public class CodeItemExtractor
     {
         if (line.StartsWith("function ", StringComparison.OrdinalIgnoreCase))
         {
-            return CreateCodeItem("function", line, lineNumber);
+            return CreateCodeItem(CodeItemKind.Function, line, lineNumber);
         }
 
         if (line.StartsWith("procedure ", StringComparison.OrdinalIgnoreCase))
         {
-            return CreateCodeItem("procedure", line, lineNumber);
+            return CreateCodeItem(CodeItemKind.Procedure, line, lineNumber);
         }
 
         if (line.StartsWith("method ", StringComparison.OrdinalIgnoreCase))
         {
-            return CreateCodeItem("method", line, lineNumber);
+            return CreateCodeItem(CodeItemKind.Method, line, lineNumber);
         }
 
         return null;
@@ -65,34 +65,39 @@ public class CodeItemExtractor
 
     private static CodeItem? TryCreateCSharpCodeItem(string line, int lineNumber)
     {
-        if (line.StartsWith("public class ") ||
-            line.StartsWith("internal class ") ||
-            line.StartsWith("private class ") ||
-            line.StartsWith("protected class ") ||
-            line.StartsWith("class "))
-        {
-            return CreateCodeItem("class", line, lineNumber);
-        }
+        string[] parts = SplitSignature(line);
 
-        if (line.StartsWith("public record ") ||
-            line.StartsWith("internal record ") ||
-            line.StartsWith("private record ") ||
-            line.StartsWith("record "))
+        foreach (string part in parts)
         {
-            return CreateCodeItem("record", line, lineNumber);
-        }
+            if (part == "class")
+            {
+                return CreateCodeItem(CodeItemKind.Class, line, lineNumber);
+            }
 
-        if (line.StartsWith("public interface ") ||
-            line.StartsWith("internal interface ") ||
-            line.StartsWith("interface "))
-        {
-            return CreateCodeItem("interface", line, lineNumber);
+            if (part == "record")
+            {
+                return CreateCodeItem(CodeItemKind.Record, line, lineNumber);
+            }
+
+            if (part == "interface")
+            {
+                return CreateCodeItem(CodeItemKind.Interface, line, lineNumber);
+            }
         }
 
         return null;
     }
+    private static string[] SplitSignature(string signature)
+    {
+        char[] separators = [' ', '\t'];
 
-    private static CodeItem CreateCodeItem(string kind, string signature, int lineNumber)
+        return signature.Split(
+            separators,
+            StringSplitOptions.RemoveEmptyEntries
+        );
+    }
+
+    private static CodeItem CreateCodeItem(CodeItemKind kind, string signature, int lineNumber)
     {
         string name = ExtractNameFromSignature(kind, signature);
 
@@ -107,21 +112,26 @@ public class CodeItemExtractor
         return codeItem;
     }
 
-    private static string ExtractNameFromSignature(string kind, string signature)
+    private static string ExtractNameFromSignature(CodeItemKind kind, string signature)
     {
-        string[] parts = signature.Split(
-            ' ',
-            StringSplitOptions.RemoveEmptyEntries
-        );
+        string kindText = GetKindText(kind);
+        string[] parts = SplitSignature(signature);
 
         for (int i = 0; i < parts.Length; i++)
         {
-            if (!string.Equals(parts[i], kind, StringComparison.OrdinalIgnoreCase))
+            if (!string.Equals(parts[i], kindText, StringComparison.OrdinalIgnoreCase))
             {
                 continue;
             }
 
             int nameIndex = i + 1;
+
+            if (kind == CodeItemKind.Record &&
+                nameIndex < parts.Length &&
+                (parts[nameIndex] == "class" || parts[nameIndex] == "struct"))
+            {
+                nameIndex++;
+            }
 
             if (nameIndex >= parts.Length)
             {
@@ -132,6 +142,20 @@ public class CodeItemExtractor
         }
 
         return "";
+    }
+
+    private static string GetKindText(CodeItemKind kind)
+    {
+        return kind switch
+        {
+            CodeItemKind.Class => "class",
+            CodeItemKind.Record => "record",
+            CodeItemKind.Interface => "interface",
+            CodeItemKind.Function => "function",
+            CodeItemKind.Procedure => "procedure",
+            CodeItemKind.Method => "method",
+            _ => ""
+        };
     }
 
     private static string CleanCodeItemName(string name)

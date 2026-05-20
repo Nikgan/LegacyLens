@@ -23,14 +23,14 @@ public class IndexSummaryBuilderTests
                 {
                     new CodeItem()
                     {
-                        Kind = "class",
+                        Kind = CodeItemKind.Class,
                         Name = "TestClass",
                         LineNumber = 1,
                         Signature = "public class TestClass"
                     },
                     new CodeItem()
                     {
-                        Kind = "class",
+                        Kind = CodeItemKind.Class,
                         Name = "AnotherClass",
                         LineNumber = 10,
                         Signature = "public class AnotherClass"
@@ -50,21 +50,21 @@ public class IndexSummaryBuilderTests
                 {
                     new CodeItem()
                     {
-                        Kind = "class",
+                        Kind = CodeItemKind.Class,
                         Name = "TestClass",
                         LineNumber = 1,
                         Signature = "public class TestClass"
                     },
                     new CodeItem()
                     {
-                        Kind = "class",
+                        Kind = CodeItemKind.Class,
                         Name = "AnotherClass",
                         LineNumber = 10,
                         Signature = "public class AnotherClass"
                     },
                     new CodeItem()
                     {
-                        Kind = "class",
+                        Kind = CodeItemKind.Class,
                         Name = "Another3Class",
                         LineNumber = 11,
                         Signature = "public class AnotherClass"
@@ -103,14 +103,14 @@ public class IndexSummaryBuilderTests
             {
                 new CodeItem()
                 {
-                    Kind = "class",
+                    Kind = CodeItemKind.Class,
                     Name = "TestClass",
                     LineNumber = 1,
                     Signature = "public class TestClass"
                 },
                 new CodeItem()
                 {
-                    Kind = "class",
+                    Kind = CodeItemKind.Class,
                     Name = "AnotherClass",
                     LineNumber = 10,
                     Signature = "public class AnotherClass"

@@ -1,13 +1,13 @@
 {
   "RootPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens",
-  "CreatedAt": "2026-05-19T19:55:42.3789309Z",
+  "CreatedAt": "2026-05-20T08:13:01.8113481Z",
   "Summary": {
-    "FileCount": 21,
+    "FileCount": 22,
     "ReadErrorCount": 0,
-    "TotalLineCount": 1337,
-    "TotalNonEmptyLineCount": 1105,
+    "TotalLineCount": 1365,
+    "TotalNonEmptyLineCount": 1131,
     "totalCodeItemCount": 19,
-    "TotalSizeBytes": 39835
+    "TotalSizeBytes": 40838
   },
   "Files": [
     {
@@ -57,7 +57,7 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\CodeItem.cs",
       "RelativePath": "LegacyLens\\Models\\CodeItem.cs",
       "Extension": ".cs",
-      "SizeBytes": 260,
+      "SizeBytes": 266,
       "LineCount": 9,
       "NonEmptyLineCount": 8,
       "CodeItems": [
@@ -73,11 +73,23 @@
       "IsReadSuccessfully": true
     },
     {
+      "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\CodeItemKind.cs",
+      "RelativePath": "LegacyLens\\Models\\CodeItemKind.cs",
+      "Extension": ".cs",
+      "SizeBytes": 146,
+      "LineCount": 11,
+      "NonEmptyLineCount": 10,
+      "CodeItems": [],
+      "ErrorMessage": null,
+      "CodeItemCount": 0,
+      "IsReadSuccessfully": true
+    },
+    {
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Models\\FileIndexEntry.cs",
       "RelativePath": "LegacyLens\\Models\\FileIndexEntry.cs",
       "Extension": ".cs",
-      "SizeBytes": 617,
-      "LineCount": 16,
+      "SizeBytes": 615,
+      "LineCount": 15,
       "NonEmptyLineCount": 14,
       "CodeItems": [
         {
@@ -171,9 +183,9 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\CodeItemExtractor.cs",
       "RelativePath": "LegacyLens\\Services\\CodeItemExtractor.cs",
       "Extension": ".cs",
-      "SizeBytes": 4133,
-      "LineCount": 155,
-      "NonEmptyLineCount": 123,
+      "SizeBytes": 4697,
+      "LineCount": 170,
+      "NonEmptyLineCount": 137,
       "CodeItems": [
         {
           "Kind": "class",
@@ -266,14 +278,14 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens\\Services\\IndexJsonWriter.cs",
       "RelativePath": "LegacyLens\\Services\\IndexJsonWriter.cs",
       "Extension": ".cs",
-      "SizeBytes": 748,
-      "LineCount": 28,
-      "NonEmptyLineCount": 21,
+      "SizeBytes": 883,
+      "LineCount": 31,
+      "NonEmptyLineCount": 23,
       "CodeItems": [
         {
           "Kind": "class",
           "Name": "IndexJsonWriter",
-          "LineNumber": 6,
+          "LineNumber": 7,
           "Signature": "public class IndexJsonWriter"
         }
       ],
@@ -304,7 +316,7 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\CodeItemExtractorTests.cs",
       "RelativePath": "LegacyLens.Tests\\CodeItemExtractorTests.cs",
       "Extension": ".cs",
-      "SizeBytes": 2632,
+      "SizeBytes": 2698,
       "LineCount": 86,
       "NonEmptyLineCount": 67,
       "CodeItems": [
@@ -342,7 +354,7 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\FileScannerTests.cs",
       "RelativePath": "LegacyLens.Tests\\FileScannerTests.cs",
       "Extension": ".cs",
-      "SizeBytes": 7332,
+      "SizeBytes": 7343,
       "LineCount": 249,
       "NonEmptyLineCount": 197,
       "CodeItems": [
@@ -367,7 +379,7 @@
       "FullPath": "C:\\Users\\nikga\\source\\repos\\LegacyLens\\LegacyLens.Tests\\IndexSummaryBuilderTests.cs",
       "RelativePath": "LegacyLens.Tests\\IndexSummaryBuilderTests.cs",
       "Extension": ".cs",
-      "SizeBytes": 4872,
+      "SizeBytes": 4949,
       "LineCount": 145,
       "NonEmptyLineCount": 136,
       "CodeItems": [
