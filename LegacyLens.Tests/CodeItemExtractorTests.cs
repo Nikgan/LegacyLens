@@ -114,34 +114,6 @@ public class CodeItemExtractorTests
     }
 
     [TestMethod]
-    public void Extract_ShouldFindHarbourClass()
-    {
-        CodeItemExtractor extractor = new CodeItemExtractor();
-
-        string[] lines =
-        [
-            "class InputField",
-        "method New() class InputField",
-        "function GetPrice()"
-        ];
-
-        List<CodeItem> codeItems = extractor.Extract(".prg", lines);
-
-        Assert.HasCount(3, codeItems);
-
-        Assert.AreEqual(CodeItemKind.Class, codeItems[0].Kind);
-        Assert.AreEqual("InputField", codeItems[0].Name);
-        Assert.AreEqual(1, codeItems[0].LineNumber);
-
-        Assert.AreEqual(CodeItemKind.Method, codeItems[1].Kind);
-        Assert.AreEqual("New", codeItems[1].Name);
-        Assert.AreEqual(2, codeItems[1].LineNumber);
-
-        Assert.AreEqual(CodeItemKind.Function, codeItems[2].Kind);
-        Assert.AreEqual("GetPrice", codeItems[2].Name);
-        Assert.AreEqual(3, codeItems[2].LineNumber);
-    }
-    [TestMethod]
     public void Extract_ShouldCalculateCodeItemEndLineNumbers()
     {
         CodeItemExtractor extractor = new CodeItemExtractor();
@@ -170,5 +142,48 @@ public class CodeItemExtractorTests
         Assert.AreEqual(5, codeItems[1].LineNumber);
         Assert.AreEqual(7, codeItems[1].EndLineNumber);
         Assert.AreEqual(3, codeItems[1].LineCount);
+    }
+    [TestMethod]
+    public void Extract_ShouldIgnoreHarbourMethodDeclarationsInsideClassButFindImplementationsOutside()
+    {
+        CodeItemExtractor extractor = new CodeItemExtractor();
+
+        string[] lines =
+        [
+            "class InputField",
+        "    method New()",
+        "    method Read()",
+        "endclass",
+        "",
+        "method New()",
+        "    ::xValue := ''",
+        "return Self",
+        "",
+        "method Read() class InputField",
+        "    return nil",
+        "",
+        "function CreateInputField()",
+        "    return InputField():New()"
+        ];
+
+        List<CodeItem> codeItems = extractor.Extract(".prg", lines);
+
+        Assert.HasCount(4, codeItems);
+
+        Assert.AreEqual(CodeItemKind.Class, codeItems[0].Kind);
+        Assert.AreEqual("InputField", codeItems[0].Name);
+        Assert.AreEqual(1, codeItems[0].LineNumber);
+
+        Assert.AreEqual(CodeItemKind.Method, codeItems[1].Kind);
+        Assert.AreEqual("New", codeItems[1].Name);
+        Assert.AreEqual(6, codeItems[1].LineNumber);
+
+        Assert.AreEqual(CodeItemKind.Method, codeItems[2].Kind);
+        Assert.AreEqual("Read", codeItems[2].Name);
+        Assert.AreEqual(10, codeItems[2].LineNumber);
+
+        Assert.AreEqual(CodeItemKind.Function, codeItems[3].Kind);
+        Assert.AreEqual("CreateInputField", codeItems[3].Name);
+        Assert.AreEqual(13, codeItems[3].LineNumber);
     }
 }

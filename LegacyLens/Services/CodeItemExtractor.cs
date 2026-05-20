@@ -8,6 +8,8 @@ public class CodeItemExtractor
     {
         List<CodeItem> codeItems = new List<CodeItem>();
 
+        bool isInsideHarbourClassDeclarationBlock = false;
+
         for (int i = 0; i < lines.Length; i++)
         {
             string trimmedLine = lines[i].Trim();
@@ -26,7 +28,22 @@ public class CodeItemExtractor
 
             if (extension == ".prg")
             {
-                codeItem = TryCreateHarbourCodeItem(trimmedLine, i + 1);
+                if (IsHarbourClassEndLine(trimmedLine))
+                {
+                    isInsideHarbourClassDeclarationBlock = false;
+                    continue;
+                }
+
+                codeItem = TryCreateHarbourCodeItem(
+                    trimmedLine,
+                    i + 1,
+                    isInsideHarbourClassDeclarationBlock
+                );
+
+                if (IsHarbourClassStartLine(trimmedLine))
+                {
+                    isInsideHarbourClassDeclarationBlock = true;
+                }
             }
 
             if (extension == ".cs")
@@ -43,9 +60,13 @@ public class CodeItemExtractor
         return ApplyEndLineNumbers(codeItems, lines.Length);
     }
 
-    private static CodeItem? TryCreateHarbourCodeItem(string line, int lineNumber)
+    private static CodeItem? TryCreateHarbourCodeItem(
+    string line,
+    int lineNumber,
+    bool isInsideClassDeclarationBlock
+)
     {
-        if (line.StartsWith("class ", StringComparison.OrdinalIgnoreCase))
+        if (IsHarbourClassStartLine(line))
         {
             return CreateCodeItem(CodeItemKind.Class, line, lineNumber);
         }
@@ -60,12 +81,23 @@ public class CodeItemExtractor
             return CreateCodeItem(CodeItemKind.Procedure, line, lineNumber);
         }
 
-        if (line.StartsWith("method ", StringComparison.OrdinalIgnoreCase))
+        if (line.StartsWith("method ", StringComparison.OrdinalIgnoreCase) &&
+            !isInsideClassDeclarationBlock)
         {
             return CreateCodeItem(CodeItemKind.Method, line, lineNumber);
         }
 
         return null;
+    }
+
+    private static bool IsHarbourClassStartLine(string line)
+    {
+        return line.StartsWith("class ", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsHarbourClassEndLine(string line)
+    {
+        return string.Equals(line, "endclass", StringComparison.OrdinalIgnoreCase);
     }
 
     private static CodeItem? TryCreateCSharpCodeItem(string line, int lineNumber)
