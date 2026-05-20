@@ -38,6 +38,7 @@ public class IndexSummaryBuilderTests
                         Signature = "public class AnotherClass"
                     }
                 },
+                CodeChunks = [],
                 ErrorMessage = null
             },
             new FileIndexEntry()
@@ -75,6 +76,7 @@ public class IndexSummaryBuilderTests
                         Signature = "public class AnotherClass"
                     }
                 },
+                CodeChunks = [],
                 ErrorMessage = null
             }
         };
@@ -123,6 +125,7 @@ public class IndexSummaryBuilderTests
                     Signature = "public class AnotherClass"
                 }
             },
+            CodeChunks = [],
             ErrorMessage = null
         },
         new FileIndexEntry()
@@ -134,6 +137,7 @@ public class IndexSummaryBuilderTests
             LineCount = 0,
             NonEmptyLineCount = 0,
             CodeItems = [],
+            CodeChunks = [],
             ErrorMessage = "Access denied"
         }
     };

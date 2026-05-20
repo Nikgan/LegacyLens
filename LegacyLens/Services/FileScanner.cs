@@ -6,9 +6,11 @@ namespace LegacyLens.Services;
 public class FileScanner
 {
     private readonly CodeItemExtractor _codeItemExtractor;
-    public FileScanner(CodeItemExtractor codeItemExtractor)
+    private readonly CodeChunkBuilder _codeChunkBuilder;
+    public FileScanner(CodeItemExtractor codeItemExtractor, CodeChunkBuilder codeChunkBuilder)
     {
         _codeItemExtractor = codeItemExtractor;
+        _codeChunkBuilder = codeChunkBuilder;
     }
     public List<FileIndexEntry> Scan(string rootPath, ScannerOptions options)
     {
@@ -126,6 +128,7 @@ public class FileScanner
             int lineCount = lines.Length;
             int nonEmptyLineCount = CountNonEmptyLines(lines);
             List<CodeItem> codeItems = _codeItemExtractor.Extract(extension, lines);
+            List<CodeChunk> codeChunks = _codeChunkBuilder.Build(codeItems, lines);
 
             FileIndexEntry entry = new FileIndexEntry()
             {
@@ -136,6 +139,7 @@ public class FileScanner
                 LineCount = lineCount,
                 NonEmptyLineCount = nonEmptyLineCount,
                 CodeItems = codeItems,
+                CodeChunks = codeChunks,
                 ErrorMessage = null
             };
             return entry;
@@ -151,6 +155,7 @@ public class FileScanner
                 LineCount = 0,
                 NonEmptyLineCount = 0,
                 CodeItems = [],
+                CodeChunks = [],
                 ErrorMessage = exception.Message
             };
             return entry;

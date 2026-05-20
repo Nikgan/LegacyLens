@@ -38,7 +38,8 @@ public class FileScannerTests
 			};
 
             CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            FileScanner scanner = new FileScanner(codeItemExtractor);
+            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
+            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
@@ -88,7 +89,8 @@ public class FileScannerTests
 			};
 
             CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            FileScanner scanner = new FileScanner(codeItemExtractor);
+            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
+            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
@@ -131,7 +133,8 @@ public class FileScannerTests
 			};
 
             CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            FileScanner scanner = new FileScanner(codeItemExtractor);
+            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
+            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
@@ -139,7 +142,8 @@ public class FileScannerTests
 
 			FileIndexEntry entry = entries[0];
 
-			Assert.AreEqual("Program.cs", entry.RelativePath);
+            Assert.HasCount(1, entry.CodeChunks);
+            Assert.AreEqual("Program.cs", entry.RelativePath);
 			Assert.AreEqual(".cs", entry.Extension);
 			Assert.AreEqual(7, entry.LineCount);
 			Assert.AreEqual(6, entry.NonEmptyLineCount);
@@ -180,7 +184,8 @@ public class FileScannerTests
 			};
 
             CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            FileScanner scanner = new FileScanner(codeItemExtractor);
+            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
+            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
@@ -222,7 +227,8 @@ public class FileScannerTests
 			};
 
             CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            FileScanner scanner = new FileScanner(codeItemExtractor);
+            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
+            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 

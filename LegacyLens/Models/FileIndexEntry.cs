@@ -9,7 +9,10 @@ public record FileIndexEntry
     public required int LineCount { get; init; }
     public required int NonEmptyLineCount { get; init; }
     public required List<CodeItem> CodeItems { get; init; }
+    public required List<CodeChunk> CodeChunks { get; init; }
     public required string? ErrorMessage { get; init; }
+
     public int CodeItemCount => CodeItems.Count;
+    public int CodeChunkCount => CodeChunks.Count;
     public bool IsReadSuccessfully => ErrorMessage is null;
 }

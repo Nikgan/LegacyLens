@@ -46,7 +46,8 @@ if (!Directory.Exists(rootPath))
 }
 
 CodeItemExtractor codeItemExtractor = new();
-FileScanner fileScanner = new(codeItemExtractor);
+CodeChunkBuilder codeChunkBuilder = new();
+FileScanner fileScanner = new(codeItemExtractor, codeChunkBuilder);
 IndexSummaryBuilder summaryBuilder = new();
 CodebaseIndexBuilder indexBuilder = new(fileScanner, summaryBuilder);
 
