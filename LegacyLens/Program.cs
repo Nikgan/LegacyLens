@@ -28,15 +28,10 @@ if (commandLineOptions.ShowHelp)
 string rootPath = commandLineOptions.RootPath;
 
 
-ScannerOptions scannerOptions = new()
-{
-    AllowedPatterns = ["*.prg", "*.ch", "*.cs", "*.log", "*.txt", "*.md"],
-    ExcludedDirectoryNames = ["bin", "obj", ".git", ".vs", ".vscode", "node_modules", "packages"],
-    SearchOption = commandLineOptions.SearchOption
-};
+SearchOption searchOption = commandLineOptions.SearchOption;
 
 Console.WriteLine($"Indexing folder: {rootPath}");
-Console.WriteLine($"Search mode: {scannerOptions.SearchOption}");
+Console.WriteLine($"Search mode: {searchOption}");
 Console.WriteLine($"Output path: {commandLineOptions.OutputPath}");
 
 if (!Directory.Exists(rootPath))
@@ -45,16 +40,18 @@ if (!Directory.Exists(rootPath))
     return;
 }
 
+ScannerOptionsFactory scannerOptionsFactory = new ScannerOptionsFactory();
 CodeItemExtractor codeItemExtractor = new();
 CodeChunkBuilder codeChunkBuilder = new();
 FileScanner fileScanner = new(codeItemExtractor, codeChunkBuilder);
 IndexSummaryBuilder summaryBuilder = new();
 CodebaseIndexBuilder indexBuilder = new(fileScanner, summaryBuilder);
+IndexingService indexingService = new(scannerOptionsFactory, indexBuilder);
 
 ConsoleIndexReporter reporter = new();
 IndexJsonWriter jsonWriter = new();
 
-CodebaseIndex codebaseIndex = indexBuilder.Build(rootPath, scannerOptions);
+CodebaseIndex codebaseIndex = indexingService.Build(rootPath, searchOption);
 
 reporter.Print(codebaseIndex);
 try
