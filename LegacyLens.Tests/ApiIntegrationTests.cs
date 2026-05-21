@@ -12,7 +12,7 @@ public class ApiIntegrationTests
     [TestMethod]
     public async Task Health_ShouldReturnOk()
     {
-        await using WebApplicationFactory<Program> factory = new WebApplicationFactory<Program>();
+        await using WebApplicationFactory<Program> factory = new();
 
         HttpClient client = factory.CreateClient();
 
@@ -87,7 +87,7 @@ public class ApiIntegrationTests
     [TestMethod]
     public async Task Index_ShouldReturnNotFoundForMissingDirectory()
     {
-        await using WebApplicationFactory<Program> factory = new WebApplicationFactory<Program>();
+        await using WebApplicationFactory<Program> factory = new();
 
         HttpClient client = factory.CreateClient();
 
