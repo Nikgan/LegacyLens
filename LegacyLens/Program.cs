@@ -40,7 +40,7 @@ if (!Directory.Exists(rootPath))
     return;
 }
 
-ScannerOptionsFactory scannerOptionsFactory = new ScannerOptionsFactory();
+ScannerOptionsFactory scannerOptionsFactory = new();
 CodeItemExtractor codeItemExtractor = new();
 CodeChunkBuilder codeChunkBuilder = new();
 FileScanner fileScanner = new(codeItemExtractor, codeChunkBuilder);
