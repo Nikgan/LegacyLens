@@ -30,4 +30,19 @@ public class CodebaseIndexBuilder
 
         return codebaseIndex;
     }
+
+    public async Task<CodebaseIndex> BuildAsync(string rootPath, ScannerOptions scannerOptions, CancellationToken cancellationToken)
+    {
+        List<FileIndexEntry> entries = await _fileScanner.ScanAsync(rootPath, scannerOptions, cancellationToken);
+        IndexSummary summary = _summaryBuilder.Build(entries);
+
+        CodebaseIndex codebaseIndex = new CodebaseIndex(
+            rootPath,
+            DateTime.UtcNow,
+            summary,
+            entries
+        );
+
+        return codebaseIndex;
+    }
 }

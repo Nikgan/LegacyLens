@@ -28,4 +28,17 @@ public class IndexingService
 
         return codebaseIndex;
     }
+
+    public async Task<CodebaseIndex> BuildAsync(string rootPath, SearchOption searchOption, CancellationToken cancellationToken)
+    {
+        ScannerOptions scannerOptions = _scannerOptionsFactory.Create(searchOption);
+
+        CodebaseIndex codebaseIndex = await _codebaseIndexBuilder.BuildAsync(
+            rootPath,
+            scannerOptions, 
+            cancellationToken
+        );
+
+        return codebaseIndex;
+    }
 }

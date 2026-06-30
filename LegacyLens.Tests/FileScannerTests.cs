@@ -30,16 +30,14 @@ public class FileScannerTests
 			File.WriteAllText(textFilePath, "hello");
 			File.WriteAllText(ignoredFilePath, "fake image");
 
-			ScannerOptions options = new ScannerOptions()
+			ScannerOptions options = new()
 			{
 				AllowedPatterns = ["*.cs", "*.txt"],
 				ExcludedDirectoryNames = ["bin", "obj"],
 				SearchOption = SearchOption.AllDirectories
 			};
 
-            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
-            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
+            FileScanner scanner = CreateFileScanner();
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
@@ -81,16 +79,14 @@ public class FileScannerTests
 			File.WriteAllText(objFilePath, "public class GeneratedClass { }");
 			File.WriteAllText(binFilePath, "public class CompiledClass { }");
 
-			ScannerOptions options = new ScannerOptions()
+			ScannerOptions options = new()
 			{
 				AllowedPatterns = ["*.cs"],
 				ExcludedDirectoryNames = ["bin", "obj"],
 				SearchOption = SearchOption.AllDirectories
 			};
 
-            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
-            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
+            FileScanner scanner = CreateFileScanner();
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
@@ -125,16 +121,14 @@ public class FileScannerTests
 
 			File.WriteAllText(sourceFilePath, fileContent);
 
-			ScannerOptions options = new ScannerOptions()
+			ScannerOptions options = new()
 			{
 				AllowedPatterns = ["*.cs"],
 				ExcludedDirectoryNames = ["bin", "obj"],
 				SearchOption = SearchOption.AllDirectories
 			};
 
-            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
-            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
+            FileScanner scanner = CreateFileScanner();
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
@@ -183,9 +177,7 @@ public class FileScannerTests
 				SearchOption = SearchOption.AllDirectories
 			};
 
-            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
-            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
+            FileScanner scanner = CreateFileScanner();
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
@@ -219,16 +211,14 @@ public class FileScannerTests
 			File.WriteAllText(rootFilePath, "public class Program { }");
 			File.WriteAllText(nestedFilePath, "public class FileScanner { }");
 
-			ScannerOptions options = new ScannerOptions()
+			ScannerOptions options = new()
 			{
 				AllowedPatterns = ["*.cs"],
 				ExcludedDirectoryNames = ["bin", "obj"],
 				SearchOption = SearchOption.TopDirectoryOnly
 			};
 
-            CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
-            CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
-            FileScanner scanner = new FileScanner(codeItemExtractor, codeChunkBuilder);
+            FileScanner scanner = CreateFileScanner();
 
             List<FileIndexEntry> entries = scanner.Scan(rootPath, options);
 
@@ -240,7 +230,128 @@ public class FileScannerTests
 			Directory.Delete(rootPath, true);
 		}
 	}
-	private static string CreateTempDirectory()
+
+    [TestMethod]
+    public async Task ScanAsync_ShouldScanAllowedFiles()
+    {
+        string rootPath = Path.Combine(
+            Path.GetTempPath(),
+            $"LegacyLensTests_{Guid.NewGuid()}"
+        );
+
+        Directory.CreateDirectory(rootPath);
+
+        try
+        {
+            string codeFilePath = Path.Combine(rootPath, "Program.cs");
+            string ignoredFilePath = Path.Combine(rootPath, "ignored.exe");
+
+            File.WriteAllText(
+                codeFilePath,
+                """
+                public class Program
+                {
+                }
+                """
+            );
+
+            File.WriteAllText(ignoredFilePath, "ignored");
+
+            ScannerOptions options = new ScannerOptions()
+            {
+                AllowedPatterns = ["*.cs"],
+                ExcludedDirectoryNames = [],
+                SearchOption = SearchOption.TopDirectoryOnly
+            };
+
+            FileScanner scanner = CreateFileScanner();
+
+            List<FileIndexEntry> entries = await scanner.ScanAsync(
+                rootPath,
+                options,
+                CancellationToken.None
+            );
+
+            Assert.HasCount(1, entries);
+
+            FileIndexEntry entry = entries[0];
+
+            Assert.AreEqual("Program.cs", entry.RelativePath);
+            Assert.AreEqual(".cs", entry.Extension);
+            Assert.IsTrue(entry.IsReadSuccessfully);
+            Assert.AreEqual(1, entry.CodeItemCount);
+            Assert.AreEqual(CodeItemKind.Class, entry.CodeItems[0].Kind);
+            Assert.AreEqual("Program", entry.CodeItems[0].Name);
+        }
+        finally
+        {
+            if (Directory.Exists(rootPath))
+            {
+                Directory.Delete(rootPath, recursive: true);
+            }
+        }
+    }
+
+    [TestMethod]
+    public async Task ScanAsync_ShouldThrowWhenCancellationIsRequested()
+    {
+        string rootPath = Path.Combine(
+            Path.GetTempPath(),
+            $"LegacyLensTests_{Guid.NewGuid()}"
+        );
+
+        Directory.CreateDirectory(rootPath);
+
+        try
+        {
+            string codeFilePath = Path.Combine(rootPath, "Program.cs");
+
+            File.WriteAllText(
+                codeFilePath,
+                """
+                public class Program
+                {
+                }
+                """
+            );
+
+            ScannerOptions options = new ScannerOptions()
+            {
+                AllowedPatterns = ["*.cs"],
+                ExcludedDirectoryNames = [],
+                SearchOption = SearchOption.TopDirectoryOnly
+            };
+
+            FileScanner scanner = CreateFileScanner();
+
+            using CancellationTokenSource cancellationTokenSource = new();
+            cancellationTokenSource.Cancel();
+
+            try
+            {
+                await scanner.ScanAsync(
+                    rootPath,
+                    options,
+                    cancellationTokenSource.Token
+                );
+
+                Assert.Fail("Expected OperationCanceledException.");
+            }
+            catch (OperationCanceledException)
+            {
+                // Expected.
+            }
+        }
+        finally
+        {
+            if (Directory.Exists(rootPath))
+            {
+                Directory.Delete(rootPath, recursive: true);
+            }
+        }
+    }
+
+    private static string CreateTempDirectory()
 	{
 		string tempDirectoryPath = Path.Combine(
 			Path.GetTempPath(),
@@ -252,4 +363,17 @@ public class FileScannerTests
 
 		return tempDirectoryPath;
 	}
+
+    private static FileScanner CreateFileScanner()
+    {
+        CodeItemExtractor codeItemExtractor = new CodeItemExtractor();
+        CodeChunkBuilder codeChunkBuilder = new CodeChunkBuilder();
+
+        FileScanner scanner = new FileScanner(
+            codeItemExtractor,
+            codeChunkBuilder
+        );
+
+        return scanner;
+    }
 }

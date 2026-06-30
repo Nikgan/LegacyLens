@@ -27,9 +27,10 @@ public static class IndexingEndpoints
             .Produces<ApiError>(StatusCodes.Status404NotFound);
     }
 
-    private static IResult BuildIndex(
+    private static async Task<IResult> BuildIndex(
         IndexRequest request,
-        IndexingService indexingService
+        IndexingService indexingService,
+        CancellationToken cancellationToken
     )
     {
         IResult? validationError = ValidateRequest(request);
@@ -41,17 +42,19 @@ public static class IndexingEndpoints
 
         SearchOption searchOption = GetSearchOption(request);
 
-        CodebaseIndex codebaseIndex = indexingService.Build(
+        CodebaseIndex codebaseIndex = await indexingService.BuildAsync(
             request.RootPath,
-            searchOption
+            searchOption,
+            cancellationToken
         );
 
         return Results.Ok(codebaseIndex);
     }
 
-    private static IResult BuildIndexSummary(
+    private static async Task<IResult> BuildIndexSummary(
         IndexRequest request,
-        IndexingService indexingService
+        IndexingService indexingService,
+        CancellationToken cancellationToken
     )
     {
         IResult? validationError = ValidateRequest(request);
@@ -63,9 +66,10 @@ public static class IndexingEndpoints
 
         SearchOption searchOption = GetSearchOption(request);
 
-        CodebaseIndex codebaseIndex = indexingService.Build(
+        CodebaseIndex codebaseIndex = await indexingService.BuildAsync(
             request.RootPath,
-            searchOption
+            searchOption,
+            cancellationToken
         );
 
         return Results.Ok(codebaseIndex.Summary);

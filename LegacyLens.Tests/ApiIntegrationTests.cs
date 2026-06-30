@@ -16,11 +16,11 @@ public class ApiIntegrationTests
 
         HttpClient client = factory.CreateClient();
 
-        HttpResponseMessage response = await client.GetAsync("/health");
+        HttpResponseMessage response = await client.GetAsync("/health", TestContext.CancellationToken);
 
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 
-        string responseText = await response.Content.ReadAsStringAsync();
+        string responseText = await response.Content.ReadAsStringAsync(TestContext.CancellationToken);
 
         Assert.Contains("LegacyLens.Api", responseText);
         Assert.Contains("ok", responseText);
