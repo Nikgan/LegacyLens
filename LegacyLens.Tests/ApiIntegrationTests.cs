@@ -80,7 +80,7 @@ public class ApiIntegrationTests
 
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 
-            IndexSummary? summary = await response.Content.ReadFromJsonAsync<IndexSummary>(TestContext.CancellationToken);
+            IndexSummary? summary = await response.Content.ReadFromJsonAsync<IndexSummary>(JsonOptions, TestContext.CancellationToken);
 
             Assert.IsNotNull(summary);
             Assert.AreEqual(1, summary.FileCount);
@@ -123,7 +123,7 @@ public class ApiIntegrationTests
 
         Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
 
-        ApiError? error = await response.Content.ReadFromJsonAsync<ApiError>(TestContext.CancellationToken);
+        ApiError? error = await response.Content.ReadFromJsonAsync<ApiError>(JsonOptions, TestContext.CancellationToken);
 
         Assert.IsNotNull(error);
         Assert.Contains("Directory not found", error.Error);
@@ -153,6 +153,7 @@ public class ApiIntegrationTests
         Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
 
         ApiError? error = await response.Content.ReadFromJsonAsync<ApiError>(
+            JsonOptions,
             TestContext.CancellationToken
         );
 
