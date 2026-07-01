@@ -1,4 +1,5 @@
 ﻿using LegacyLens.Api.Models;
+using LegacyLens.Api.Validation;
 using LegacyLens.Models;
 using LegacyLens.Services;
 using Microsoft.AspNetCore.Builder;
@@ -30,10 +31,11 @@ public static class IndexingEndpoints
     private static async Task<IResult> BuildIndex(
         IndexRequest request,
         IndexingService indexingService,
+        IndexRequestValidator validator,
         CancellationToken cancellationToken
     )
     {
-        IResult? validationError = ValidateRequest(request);
+        IResult? validationError = validator.Validate(request);
 
         if (validationError is not null)
         {
@@ -54,10 +56,11 @@ public static class IndexingEndpoints
     private static async Task<IResult> BuildIndexSummary(
         IndexRequest request,
         IndexingService indexingService,
+        IndexRequestValidator validator,
         CancellationToken cancellationToken
     )
     {
-        IResult? validationError = ValidateRequest(request);
+        IResult? validationError = validator.Validate(request);
 
         if (validationError is not null)
         {
@@ -73,27 +76,6 @@ public static class IndexingEndpoints
         );
 
         return Results.Ok(codebaseIndex.Summary);
-    }
-
-    private static IResult? ValidateRequest(IndexRequest request)
-    {
-        if (string.IsNullOrWhiteSpace(request.RootPath))
-        {
-            return Results.BadRequest(new ApiError()
-            {
-                Error = "RootPath is required."
-            });
-        }
-
-        if (!Directory.Exists(request.RootPath))
-        {
-            return Results.NotFound(new ApiError()
-            {
-                Error = $"Directory not found: {request.RootPath}"
-            });
-        }
-
-        return null;
     }
 
     private static SearchOption GetSearchOption(IndexRequest request)

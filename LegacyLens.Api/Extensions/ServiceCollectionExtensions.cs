@@ -1,4 +1,5 @@
-﻿using LegacyLens.Options;
+﻿using LegacyLens.Api.Validation;
+using LegacyLens.Options;
 using LegacyLens.Services;
 
 namespace LegacyLens.Api.Extensions;
@@ -16,6 +17,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IndexSummaryBuilder>();
         services.AddSingleton<CodebaseIndexBuilder>();
         services.AddSingleton<IndexingService>();
+        services.AddSingleton<IndexRequestValidator>();
 
         return services;
     }
