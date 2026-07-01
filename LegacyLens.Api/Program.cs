@@ -25,6 +25,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseApiExceptionHandling();
+
 app.MapSystemEndpoints();
 app.MapIndexingEndpoints();
 
