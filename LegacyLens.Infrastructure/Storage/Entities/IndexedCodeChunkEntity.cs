@@ -1,4 +1,4 @@
-﻿namespace LegacyLens.Storage.Entities;
+﻿namespace LegacyLens.Infrastructure.Storage.Entities;
 
 public class IndexedCodeChunkEntity
 {

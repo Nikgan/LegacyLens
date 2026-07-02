@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LegacyLens\LegacyLens.csproj" />
+    <ProjectReference Include="..\LegacyLens.Infrastructure\LegacyLens.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
