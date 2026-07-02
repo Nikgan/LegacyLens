@@ -1,8 +1,9 @@
-﻿using System.Net;
-using System.Text.Json;
-using LegacyLens.Api.Middleware;
+﻿using LegacyLens.Api.Middleware;
 using LegacyLens.Api.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging.Abstractions;
+using System.Net;
+using System.Text.Json;
 
 namespace LegacyLens.Tests;
 
@@ -17,7 +18,7 @@ public class ApiExceptionHandlingMiddlewareTests
 
         RequestDelegate next = _ => throw new InvalidOperationException("Test exception.");
 
-        ApiExceptionHandlingMiddleware middleware = new(next);
+        ApiExceptionHandlingMiddleware middleware = new(next, NullLogger<ApiExceptionHandlingMiddleware>.Instance);
 
         await middleware.InvokeAsync(context);
 

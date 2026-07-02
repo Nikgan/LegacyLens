@@ -96,7 +96,7 @@ public class IndexRequestValidatorTests
 
         Assert.IsNotNull(statusCodeResult.StatusCode);
         Assert.IsNotNull(value);
-        Assert.IsInstanceOfType(value, typeof(ApiError));
+        Assert.IsInstanceOfType<ApiError>(value);
 
         ApiError error = (ApiError)value;
 
